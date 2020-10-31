@@ -6,7 +6,8 @@ from region.models import City, Region
 
 @admin.register(City)
 class AdminCity(admin.ModelAdmin):
-    pass
+    list_display = ['icon_thumb', 'name']
+    list_display_links = ['name']
 
 
 @admin.register(Region)

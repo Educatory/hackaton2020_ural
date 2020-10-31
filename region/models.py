@@ -33,7 +33,6 @@ class Region(Location):
 
 class City(Location):
     """Города"""
-    # gerb_img = models.ImageField()
     region = models.ForeignKey(Region, verbose_name=u"Район", on_delete=models.CASCADE)
     icon = models.ImageField("Logo", blank=True, null=True)
 

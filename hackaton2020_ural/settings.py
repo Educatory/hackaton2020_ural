@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'core',
     'dashboard',
     'region',
+    'users',
 
     # Exta
     'compressor',

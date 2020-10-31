@@ -24,53 +24,25 @@
                 </div>
 
                 <div class="card-body">
-                    <ul class="list-group list-group-flush border-top">
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <span class="font-weight-semibold">
-                                <i class="icon-city mr-2"></i>
-                                Салехард
-                            </span>
-                            <span class="badge bg-success ml-auto">5.6</span>
-                        </a>
+                    <ul class="list-group list-group-flush municipality-list">
+                        {% for item in municipality %}
 
-                        <a href="" class="list-group-item list-group-item-action">
-                            <span class="font-weight-semibold">
+                            <a href="" class="list-group-item list-group-item-action">
+                            <span class="font-weight-bold">
                                 <i class="icon-city mr-2"></i>
-                                Новый Уренгой
+                                {{ item }}
                             </span>
-                        </a>
+                                <span class="badge bg-success ml-auto">{{ item.get_index }}</span>
+                            </a>
+                        {% endfor %}
 
-                        <a href="" class="list-group-item list-group-item-action">
-                            <span class="font-weight-semibold">
-                                <i class="icon-city mr-2"></i>
-                                Лабытнанги
-                            </span>
-                        </a>
-                        <a href="" class="list-group-item list-group-item-action">
-                            <span class="font-weight-semibold">
-                                <i class="icon-city mr-2"></i>
-                                Надым
-                            </span>
-                        </a>
-                        <a href="" class="list-group-item list-group-item-action">
-                            <span class="font-weight-semibold">
-                                <i class="icon-city mr-2"></i>
-                                Муравленко
-                            </span>
-                        </a>
-                        <a href="" class="list-group-item list-group-item-action">
-                            <span class="font-weight-semibold">
-                                <i class="icon-city mr-2"></i>
-                                Ноябрьск
-                            </span>
-                        </a>
                     </ul>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <span>Общий рейтинг</span>
+                    <span>Общий индекс</span>
                     <span class="text-muted">Обновлено 2 часа назад</span>
                     <span>
-                        <span class="badge bg-success ml-auto">5.6</span>
+                        <span class="badge bg-success ml-auto">{{ general_index }}</span>
 					</span>
                 </div>
             </div>

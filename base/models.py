@@ -42,3 +42,12 @@ class Municipality(models.Model):
 
     def __str__(self):
         return self.city.name
+
+    def get_index(self):
+        """Вычисление среднего индекса относительно критереев"""
+        return 5.7
+
+    @classmethod
+    def get_general_index(cls):
+        """Вычисление среднего общего индекса """
+        return 5.7

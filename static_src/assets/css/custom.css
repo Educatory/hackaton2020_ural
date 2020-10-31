@@ -236,3 +236,14 @@ body {
     background-image: url("../../dashboard/map_hover.jpg");
     cursor: pointer;
 }
+
+.badge {
+    padding: 10px;
+    font-size: 16px;
+}
+.municipality-list a {
+    font-size: 16px;
+}
+.municipality-list i {
+    color: #26a69a;
+}

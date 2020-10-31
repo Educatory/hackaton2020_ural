@@ -12,6 +12,9 @@ class BasicIndicators(models.Model):
         verbose_name = 'Базовый показетель'
         verbose_name_plural = 'Базоваые показетели'
 
+    def __str__(self):
+        return self.name
+
 
 class Criteria(models.Model):
     name = models.CharField("Критерии", max_length=500)
@@ -23,6 +26,9 @@ class Criteria(models.Model):
         verbose_name = 'Критерии'
         verbose_name_plural = "Критерии"
 
+    def __str__(self):
+        return self.name
+
 
 class Municipality(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
@@ -32,3 +38,6 @@ class Municipality(models.Model):
         ordering = ['city']
         verbose_name = 'Мниципальный район'
         verbose_name_plural = 'Муниципальные районы'
+
+    def __str__(self):
+        return self.city.name

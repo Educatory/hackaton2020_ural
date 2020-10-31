@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),
     path('', include(('base.urls', 'base'), namespace='municipality')),
+    path('', include(('users.urls', 'users'), namespace='custom_users')),
 ]
 urlpatterns += [
     re_path('media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),

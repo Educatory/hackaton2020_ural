@@ -1,9 +1,9 @@
-{% load static thumbnail notify_site %}
+{% load static thumbnail  %}
 <div class="navbar navbar-expand-md navbar-light border-transparent">
   <!-- Header with logo -->
   <div class="navbar-brand">
-<!--    <a href="{% url 'admin:dashboard:main' %}" class="d-inline-block">-->
-      <img src="{% static 'limit2/img/logo.png' %}" alt="Siteedu.ru">
+<!--    <a href="/" class="d-inline-block">-->
+      <span>СитиВижн</span>
 <!--    </a>-->
   </div>
   <!-- /header with logo -->
@@ -20,41 +20,11 @@
   <!-- Navbar content -->
   <div class="collapse navbar-collapse" id="navbar-mobile">
     <ul class="navbar-nav">
-      {% info_modal %}
+{#      {% info_modal %}#}
     </ul>
 
     <ul class="navbar-nav ml-auto">
 
-      <li class="nav-item">
-        <a class="navbar-nav-link" href="{{ request.site.site_url }}" target="_blank" title="Перейти на сайт">
-          <i class="text-info icon-earth"></i>&nbsp; На сайт
-        </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="navbar-nav-link" href="{% url 'admin:cabinet:services:list' %}" title="Оплачено до">
-          <span class="visible-xs-inline-block position-right">Активно </span>
-          {#                    FIXME : Add auto change class for icon. SUCCESS or WARNING#}
-          <i class="text-success-300 icon-power-cord"></i>&nbsp; до {{ request.site.end_date }}
-        </a>
-      </li>
-{#      <li class="nav-item dropdown">#}
-{#        <a class="navbar-nav-link" href="#" class="dropdown-toggle" data-toggle="dropdown" title="Оплачено до">#}
-{#          <span class="visible-xs-inline-block position-right">Активно </span>#}
-          {#                    FIXME : Add auto change class for icon. SUCCESS or WARNING#}
-{#          <i class="text-success-300 icon-power-cord"></i>&nbsp; до {{ request.site.end_date }}#}
-{##}
-{#        </a>#}
-{##}
-{#        <div class="dropdown-menu dropdown-content width-150">#}
-{#          <div class="dropdown-content-heading">#}
-{#            <a href="{% url 'admin:cabinet:services:add' %}">#}
-{#              <button type="submit" class="btn bg-success">#}
-{#                Продлить работу сайта <i class="icon-arrow-right8 position-right"></i>#}
-{#              </button>#}
-{#            </a>#}
-{#          </div>#}
-{#        </div>#}
-{#      </li>#}
       <li class="nav-item dropdown">
         <a href="#" class="navbar-nav-link">
           <i class="icon-bell2"></i>
@@ -68,15 +38,6 @@
 {#          <img src="../../../../global_assets/images/image.png" class="rounded-circle mr-2" height="34" alt="">#}
           <span>{{ request.user }}</span>
         </a>
-
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="{% url 'admin:cabinet:profile' %}" class="dropdown-item"><i class="icon-user-plus"></i> Профиль организации</a>
-          <a href="{% url 'admin:cabinet:payment' %}" class="dropdown-item"><i class="icon-coins"></i> Оплата</a>
-          <a href="{% url 'admin:cabinet:requisites' %}" class="dropdown-item"><i class="icon-magazine"></i> Ваши реквизиты</a>
-          <div class="dropdown-divider"></div>
-          <a href="https://accounts.educatory.org/password/change/" class="dropdown-item"><i class="icon-key"></i> Сменить пароль</a>
-          <a href="{% url 'service_logout' %}" class="dropdown-item"><i class="icon-switch2"></i> Выход</a>
-        </div>
       </li>
     </ul>
   </div>

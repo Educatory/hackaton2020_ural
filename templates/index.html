@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_index.html" %}
 {% load static %}
 
 {% block container %}
@@ -12,7 +12,7 @@
             <h1  class="text-primary">#СитиВижн</h1>
 
 
-            <a href="" class="w-25 mt-5 btn btn-primary btn-lg text-uppercase">Войти</a>
+            <a href="{% url 'dashboard:dashboard' %}" class="w-25 mt-5 btn btn-primary btn-lg text-uppercase">Войти</a>
         </div>
     </div>
 

@@ -22,7 +22,12 @@ INSTALLED_APPS = [
     'base',
     'core',
     'dashboard',
-    'region'
+    'region',
+
+    # Exta
+    'compressor',
+    'django_bootstrap_breadcrumbs',
+    'sorl.thumbnail'
 ]
 
 MIDDLEWARE = [

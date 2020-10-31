@@ -33,13 +33,13 @@ class Criteria(models.Model):
 
 
 class Municipality(models.Model):
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
-    criteria = models.ManyToManyField(Criteria)
+    city = models.ForeignKey(City, verbose_name='Муниципальный район',  on_delete=models.CASCADE)
+    criteria = models.ManyToManyField(Criteria, verbose_name='Критерии')
     order = models.IntegerField('Порядок', default=1)
 
     class Meta:
         ordering = ['order', 'city']
-        verbose_name = 'Мниципальный район'
+        verbose_name = 'Муниципальный район'
         verbose_name_plural = 'Муниципальные районы'
 
     def __str__(self):

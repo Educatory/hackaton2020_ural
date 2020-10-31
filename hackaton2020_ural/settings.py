@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     # Exta
     'compressor',
     'django_bootstrap_breadcrumbs',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [

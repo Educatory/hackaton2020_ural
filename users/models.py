@@ -7,7 +7,7 @@ class CustomUser(models.Model):
     ROLE = (
         [1, 'Администратор'],
         [2, 'Сотрудник'],
-        [1, 'Руководитьель']
+        [3, 'Руководитьель']
     )
 
     role = models.PositiveSmallIntegerField("Роль пользователя", choices=ROLE, default=1)

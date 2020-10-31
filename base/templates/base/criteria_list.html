@@ -10,22 +10,26 @@
             </a>
         </div>
     </div>
-    {% for foo in object_list %}
-    <div class="card">
-        <div class="card-header">
-            <h6 class="card-title">
-                <a class="text-default collapsed" data-toggle="collapse" href="#collapsible-control-right-group2" aria-expanded="false">{{ foo }}</a>
-            </h6>
-        </div>
+    <div class="criteries">
+        {% for foo in object_list %}
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="card-title">
+                        <a class="text-default collapsed" data-toggle="collapse"
+                           href="#criteries-{{ foo.pk }}" aria-expanded="false">{{ foo }}</a>
+                    </h6>
+                </div>
 
-        <div id="collapsible-control-right-group2" class="collapse" style="">
-            <div class="card-body">
-                <p><span>Описание:</span>{{ foo.description }}</p>
-                <span>Подключение к АПИ</span>{{ foo.api }}
+                <div id="criteries-{{ foo.pk }}" class="collapse" style="">
+                    <div class="card-body">
+                        <p><span>Описание:</span>{{ foo.description }}</p>
+                        <span>Подключение к АПИ</span>{{ foo.api }}
 
+                    </div>
+                    <a class="btn btn-primary" href="{% url 'municipality:criteria_edit' foo.pk %}">Редактировать</a>
+                </div>
             </div>
-            <a class="btn btn-primary" href="{% url 'municipality:criteria_edit' foo.pk %}">Редактировать</a>
-        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
 {% endblock %}

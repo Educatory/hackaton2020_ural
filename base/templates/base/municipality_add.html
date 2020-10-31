@@ -1,6 +1,7 @@
 {% extends 'form.html' %}
 
 {% block form_edit %}
+    <div class="card-body">
     {% csrf_token %}
     {% include "form/horizontal/ff.html" with field=form.city %}
     {% include "form/select2.html" with field=form.criteria %}
@@ -10,11 +11,16 @@
     <div class="row mb-3">
         {% include "form/select2.html" with field=form.age_category disable_row=True class='col-4' input_class='select2-default' %}
     </div>
-    <div class="text-left"><span class="help-block"><span class="text-danger">*</span> - поля, обязательные для заполнения.</span></div>
-    <div class="text-right">
-        <a class="btn btn-danger btn-xlg btn-labeled btn-labeled-left" href="{% url 'municipality:list' %}">
-            <b><i class="icon-x position-left"></i></b>Отмена
-        </a>
-        {% include "form/submit_button.html" %}
+    <div class="text-left">
+    <span class="help-block">
+        <span class="text-danger">*</span> - поля, обязательные для заполнения.</span></div>
+
+
+        <div class="text-right">
+            <a class="btn btn-danger btn-xlg btn-labeled btn-labeled-left" href="{% url 'municipality:list' %}">
+                <b><i class="icon-x position-left"></i></b>Отмена
+            </a>
+            {% include "form/submit_button.html" %}
+        </div>
     </div>
 {% endblock %}

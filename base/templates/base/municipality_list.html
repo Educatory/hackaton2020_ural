@@ -3,9 +3,15 @@
 {% load static cookie %}
 
 {% block content %}
-    <div class="row">
-            <a class="btn btn-danger" href="{% url 'municipality:add' %}">Добавить</a>
+    <div class="row mt-2 mb-3">
+        <div class="col-2 px-0">
+            <a class="btn btn-primary bg-primary w-100" href="{% url 'municipality:add' %}">
+                <i class="icon-plus2"></i>
+                Добавить Район/Город
+            </a>
         </div>
+    </div>
+
     <div class="row">
 
         <div class="card-columns">

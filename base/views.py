@@ -24,7 +24,7 @@ class MunicipalityDetail(DetailView, ContextProcessor):
 
 
 class CriteriaList(ListView, ContextProcessor):
-    template_name = 'base/criteria_detail.html'
+    template_name = 'base/criteria_list.html'
     section = 'criteria'
     page_title = '<i class="icon-puzzle4 mr-2"></i> Критерии'
     model = Criteria

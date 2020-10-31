@@ -7,17 +7,18 @@
             <a class="btn btn-danger" href="{% url 'municipality:add' %}">Добавить</a>
         </div>
     <div class="row">
-        {% for item in items %}
-            <div class="col-sm-3 col-6">
-                <div class="card">
-                    <a href="{% url "municipality:detail" item.pk %}" class="text-center mt-3">
-                        <img class="card-img-top w-25 h-25" src="{{ item.city.icon.url }}" alt="">
+
+        <div class="card-columns">
+            {% for item in items %}
+                <div class="card text-center">
+                    <a href="{% url "municipality:detail" item.pk %}">
+                        <img class="card-img-top w-25 h-25 mt-3" src="{{ item.city.icon.url }}" alt="">
                     </a>
 
                     <div class="card-body">
                         <h3 class="card-title">{{ item }}</h3>
                         <p class="card-text">
-                            {{ item.description|safe }}
+                            {{ item.city.description|safe }}
                         </p>
                     </div>
 
@@ -27,8 +28,9 @@
                         <span class="badge bg-success ml-auto">{{ item.get_index }}</span>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
     </div>
 
 {% endblock %}

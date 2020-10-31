@@ -227,3 +227,12 @@ body {
     text-transform: uppercase;
     text-align: center;
 }
+#region_map {
+    background: url("../../dashboard/map.jpg") no-repeat center;
+    height: 625px;
+    width: 705px;
+}
+#region_map:hover {
+    background-image: url("../../dashboard/map_hover.jpg");
+    cursor: pointer;
+}

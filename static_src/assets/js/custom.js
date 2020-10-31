@@ -101,52 +101,13 @@ $(document).ready(function () {
     });
   };
 
-  // Init input tags
-  if ($('.tagsinput-tags').length) {
-    $('.tagsinput-tags').tagsinput({
-      maxTags: 5
-    });
-  }
-  // Init file-input-alone
-  if ($('.file-input-alone').length) {
-    $(".file-input-alone").fileinput({
-      language: "ru",
-      browseClass: 'btn btn-primary btn-icon',
-      showCancel: false,
-      showZoom: false,
-      showClose: false,
-      showUpload: false,
-      uploadLabel: '',
-      indicatorNew: '',
-      uploadClass: 'btn btn-default btn-icon',
-      browseIcon: '<i class="icon-plus22"></i> ',
-      uploadIcon: '<i class="icon-file-upload"></i> ',
-      removeClass: 'btn btn-danger btn-icon',
-      removeIcon: '<i class="icon-cancel-square"></i> ',
-      layoutTemplates: {
-        caption: '<div tabindex="-1" class="form-control file-caption {class}">\n' + '<span class="icon-file-plus kv-caption-icon"></span><div class="file-caption-name"></div>\n' + '</div>',
-        footer: ''
-      },
-      overwriteInitial: true,
-      maxFileSize: 600
-    })
-      .on('fileclear', function (event) {
-        $('input[name$="-clear"]').each(function (index, element) {
-          $(element).prop('checked', true);
-        })
-      });
-  }
+  $('#role_selector').on('change', function () {
+      $('#role_selector_form').submit();
+  })
+
 });
 
-function noty(data) {
-  new Noty({
-    text: data['text'],
-    type: data['type'],
-    theme: 'light',
-    layout: data['layout'],
-    timeout: data['timeout']
-  }).show();
-}
+
 
 // Setup module
 // ------------------------------

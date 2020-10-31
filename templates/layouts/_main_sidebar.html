@@ -21,10 +21,10 @@
                 <li class="nav-item">
                     <div class="form-group px-2">
                         <label>Пример роли пользователя</label>
-                        <form action="" method="post">
+                        <form id="role_selector_form" action="{% url "dashboard:change_role" %}" method="post">
                             {% csrf_token %}
-                            <select class="form-control select select2-default" data-fouc>
-                                <option value="AL">Администратор</option>
+                            <select id="role_selector" class="form-control select select2-default" name="dashboard-role" data-fouc>
+                                <option value="ADMIN">Администратор</option>
                                 <option value="AR">Операционист</option>
                                 <option value="KS">Руководитель</option>
                             </select>
@@ -97,6 +97,12 @@
                     <a href="#" class="nav-link disabled">
                         <i class="icon-home7"></i>
                         <span>Населенные пункты</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">
+                        <i class="icon-collaboration"></i>
+                        <span>Роли и права пользователей</span>
                     </a>
                 </li>
             </ul>

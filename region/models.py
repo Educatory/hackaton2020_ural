@@ -45,7 +45,7 @@ class City(Location):
 
     def icon_thumb(self):
         if self.icon:
-            return mark_safe('<img width="100" src={}/>'.format(self.icon.url))
+            return mark_safe('<img width="100" src={}>'.format(self.icon.url))
         else:
             return '-'
 

@@ -40,7 +40,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-active="dashboard" href="#" class="nav-link">
+                    <a data-active="dashboard" href="{% url "dashboard:dashboard" %}" class="nav-link">
                         <i class="icon-map5"></i>
                         <span>
                             Информационная доска
@@ -73,7 +73,7 @@
 
                 {% if role != 'OPERATOR' %}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a data-active="reports" href="{% url "dashboard:reports" %}" class="nav-link">
                             <i class="icon-stats-bars4"></i>
                             <span>
                             Отчеты

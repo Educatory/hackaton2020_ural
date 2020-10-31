@@ -247,3 +247,9 @@ body {
 .municipality-list i {
     color: #26a69a;
 }
+
+    .card-columns {
+        -webkit-column-count:4;
+        -moz-column-count:4;
+        column-count:4;
+    }

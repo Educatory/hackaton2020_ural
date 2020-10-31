@@ -1,4 +1,7 @@
-{% load static thumbnail %}
+{% load static thumbnail cookie %}
+
+{% cookie "role" as role %}
+
 <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
     <div id="nav_active" hidden>{{ section }}</div>
 
@@ -16,7 +19,21 @@
     <div class="sidebar-content">
 
         <div class="card card-sidebar-mobile">
+
             <ul class="nav nav-sidebar" data-nav-type="accordion">
+                <li class="nav-item">
+                    <div class="form-group px-2">
+                        <label>Пример роли пользователя</label>
+                        <form action="." method="post">
+                            {% csrf_token %}
+                            <select id="role_selector" class="form-control select select2-default" data-fouc>
+                                <option value="ADMIN" {% if role == "ADMIN" %}selected{% endif %}>Администратор</option>
+                                <option value="OPERATOR" {% if role == "OPERATOR" %}selected{% endif %}>Операционист</option>
+                                <option value="DIRECTOR" {% if role == "DIRECTOR" %}selected{% endif %}>Руководитель</option>
+                            </select>
+                        </form>
+                    </div>
+                </li>
                 <li class="nav-item-header">
                     <div class="text-uppercase font-size-xs line-height-xs">
                         Основное
@@ -46,19 +63,26 @@
 						</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="icon-users"></i><span>Пользователи</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="icon-stats-bars4"></i>
-                        <span>
+                {% if role != 'OPERATOR' %}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon-users"></i><span>Пользователи</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if role != 'OPERATOR' %}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon-stats-bars4"></i>
+                            <span>
                             Отчеты
 						</span>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                {% endif %}
+
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="icon-pulse2"></i>
@@ -67,24 +91,33 @@
 						</span>
                     </a>
                 </li>
-                <li class="nav-item-header">
-                    <div class="text-uppercase font-size-xs line-height-xs">
-                        Справочники
-                    </div>
-                </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">
-                        <i class="icon-calendar2"></i>
-                        <span>Периоды</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">
-                        <i class="icon-home7"></i>
-                        <span>Населенные пункты</span>
-                    </a>
-                </li>
+                {% if role == "ADMIN" %}
+                    <li class="nav-item-header">
+                        <div class="text-uppercase font-size-xs line-height-xs">
+                            Справочники
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled">
+                            <i class="icon-calendar2"></i>
+                            <span>Периоды</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled">
+                            <i class="icon-home7"></i>
+                            <span>Населенные пункты</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled">
+                            <i class="icon-collaboration"></i>
+                            <span>Роли и права пользователей</span>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 
 from django.views.generic import TemplateView
+from django.views.generic.edit import ProcessFormView, BaseCreateView, FormView, FormMixin
 
 from core.views import ContextProcessor
 
@@ -13,3 +14,4 @@ class DashboardView(TemplateView, ContextProcessor):
     @property
     def crumbs(self):
         return []
+

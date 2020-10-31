@@ -10,9 +10,9 @@ class AdminBasicIndicators(admin.ModelAdmin):
 
 @admin.register(Criteria)
 class AdminCriteria(admin.ModelAdmin):
-    pass
+    filter_horizontal = ('indicators',)
 
 
 @admin.register(Municipality)
 class AdminMunicipality(admin.ModelAdmin):
-    pass
+    filter_horizontal = ('criteria',)

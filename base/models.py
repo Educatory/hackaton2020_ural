@@ -18,8 +18,9 @@ class BasicIndicators(models.Model):
 
 class Criteria(models.Model):
     name = models.CharField("Критерии", max_length=500)
-    indicators = models.ManyToManyField(BasicIndicators, verbose_name='Базоваые показетели')
-    formula = models.CharField("Алгоритм расчета показетля", max_length=200)
+    indicators = models.ManyToManyField(BasicIndicators, verbose_name='Базоваые показетели',
+                                        blank=True, null=True)
+    formula = models.CharField("Алгоритм расчета показетля", max_length=200, blank=True, null=True)
 
     class Meta:
         ordering = ['name']

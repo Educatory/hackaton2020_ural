@@ -1,13 +1,8 @@
 {% load static thumbnail  %}
 <div class="navbar navbar-expand-md navbar-light border-transparent">
-  <!-- Header with logo -->
   <div class="navbar-brand">
-<!--    <a href="/" class="d-inline-block">-->
-       <img src="{% static 'img/logo.png' %}" alt="Siteedu.ru">
-<!--    </a>-->
+       <img src="{% static 'img/logo.png' %}">
   </div>
-  <!-- /header with logo -->
-  <!-- Mobile controls -->
   <div class="d-flex d-md-none">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
       <i class="icon-tree5"></i>
@@ -16,30 +11,15 @@
       <i class="icon-paragraph-justify3"></i>
     </button>
   </div>
-  <!-- /mobile controls -->
-  <!-- Navbar content -->
   <div class="collapse navbar-collapse" id="navbar-mobile">
     <ul class="navbar-nav">
-{#      {% info_modal %}#}
     </ul>
-
     <ul class="navbar-nav ml-auto">
-
-      <li class="nav-item dropdown">
-        <a href="#" class="navbar-nav-link">
-          <i class="icon-bell2"></i>
-          <span class="d-md-none ml-2">Уведомления</span>
-          <span class="badge badge-mark border-white"></span>
-        </a>
-      </li>
-
       <li class="nav-item dropdown dropdown-user">
         <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-{#          <img src="../../../../global_assets/images/image.png" class="rounded-circle mr-2" height="34" alt="">#}
-          <span>{{ request.user }}</span>
+         <i class="fa fa-user pr-2 text-teal"></i> <span>{% if request.user.is_anonymous %}Нераспознанный барсук{% else %}{{ request.user }}{% endif %}</span>
         </a>
       </li>
     </ul>
   </div>
-  <!-- /navbar content -->
 </div>

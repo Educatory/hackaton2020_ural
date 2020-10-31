@@ -1,7 +1,7 @@
 {% load static thumbnail %}
 <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
     <div id="nav_active" hidden>{{ section }}</div>
-    <!-- Sidebar mobile toggler -->
+
     <div class="sidebar-mobile-toggler text-center">
         <a href="#" class="sidebar-mobile-main-toggle">
             <i class="icon-arrow-left8"></i>
@@ -12,78 +12,79 @@
             <i class="icon-screen-normal"></i>
         </a>
     </div>
-    <!-- /sidebar mobile toggler -->
 
-
-    <!-- Sidebar content -->
     <div class="sidebar-content">
 
-        <!-- User menu -->
-        <div class="sidebar-user-material">
-            <div class="sidebar-user-material-body">
-                <div class="card-body text-center">
-                    <a href="{% url 'dashboard:dashboard' %}">
-                        {% thumbnail request.site.logo "80x80" crop="center" format="PNG" as im %}
-                            <img src="{{ im.url }}" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80"
-                                 alt="{{ request.site.name }}">
-                        {% endthumbnail %}
-                    </a>
-                    <h6 class="mb-0 text-white text-shadow-dark">{{ request.site }}</h6>
-                    <span class="font-size-sm text-white text-shadow-dark">{{ request.site.address }}</span>
-                </div>
-            </div>
-
-            <div class="collapse" id="user-nav" style="">
-                <ul class="nav nav-sidebar">
-                    <li class="nav-item">
-                        <a data-active="profile" href="#" class="nav-link legitRipple">
-                            <i class="icon-user-plus"></i>
-                            <span>Профиль</span>
-                        </a>
-                    </li>
-
-                    {#          <li class="nav-item">#}
-                    {#            <a href="#" class="nav-link legitRipple">#}
-                    {#              <i class="icon-comment-discussion"></i>#}
-                    {#              <span>Техническая поддержка</span>#}
-                    {#              <span class="badge {% if unread_count > 0 %}bg-warning-400{% else %}bg-success-400{% endif %} badge-pill align-self-center ml-auto">{{ unread_count }}</span>#}
-                    {#            </a>#}
-                    {#          </li>#}
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link legitRipple">
-                            <i class="icon-switch2"></i>
-                            <span>Выход</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /user menu -->
-        <!-- Main navigation -->
         <div class="card card-sidebar-mobile">
             <ul class="nav nav-sidebar" data-nav-type="accordion">
-
-                <!-- Main -->
                 <li class="nav-item-header">
-                    <div class="text-uppercase font-size-xs line-height-xs">Главное</div>
-                    <i class="icon-menu" title="Главное"></i>
+                    <div class="text-uppercase font-size-xs line-height-xs">
+                        Основное
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a data-active="dashboard" href="#" class="nav-link">
-                        <i class="icon-home4"></i>
+                        <i class="icon-map5"></i>
                         <span>
-									Панель управления
-{#									<span class="d-block font-weight-normal opacity-50">No active orders</span>#}
-								</span>
+                            Информационная доска
+						</span>
                     </a>
                 </li>
-
-                <!-- Layout -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="icon-city"></i>
+                        <span>
+                            Районы/Города
+						</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="icon-puzzle4"></i>
+                        <span>
+                            Критерии
+						</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="icon-users"></i><span>Пользователи</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="icon-stats-bars4"></i>
+                        <span>
+                            Отчеты
+						</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="icon-pulse2"></i>
+                        <span>
+                            Активность
+						</span>
+                    </a>
+                </li>
                 <li class="nav-item-header">
-                    <div class="text-uppercase font-size-xs line-height-xs">Активность</div>
-                    <i class="icon-calendar2" title="Активность"></i></li>
+                    <div class="text-uppercase font-size-xs line-height-xs">
+                        Справочники
+                    </div>
+                </li>
 
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">
+                        <i class="icon-calendar2"></i>
+                        <span>Периоды</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled">
+                        <i class="icon-home7"></i>
+                        <span>Населенные пункты</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -1,11 +1,11 @@
-<!DOCTYPE html>{% load static compress  django_bootstrap_breadcrumbs %}
+<!DOCTYPE html>{% load static compress django_bootstrap_breadcrumbs %}
 <html lang="ru">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{% block title %}{{ page_title|striptags }} - {% endblock %} "{{ request.site.name }}"</title>
-  {#  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">#}
+  <title>{% block title %}{{ page_title|striptags }}{% endblock %}</title>
+
   {% compress css %}
     <link href="{% static 'assets/css/icons/fontawesome/styles.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'assets/css/icons/icomoon/styles.min.css' %}" rel="stylesheet" type="text/css">
@@ -15,16 +15,13 @@
     <link href="{% static "assets/css/extras/bootstrap-table.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static 'assets/css/components.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'assets/css/colors.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static "redactor/redactor_static.css" %}" rel="stylesheet">
     <link href="{% static "assets/css/extras/animate.min.css" %}" rel="stylesheet">
-    <link href="{% static "lassets/css/noty/noty.css" %}" rel="stylesheet">
     <link href="{% static "/assets/css/noty/themes/light.css" %}" rel="stylesheet">
     <link href="{% static "assets/css/tempusdominus-bootstrap-4.min.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet" type="text/css">
 {#    <link href="{% static 'assets/js/plugins/tables/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet"#}
 {#          type="text/css">#}
     {% block extra_css %}{% endblock extra_css %}
-    {#    <link href="{% static "css/extras/bootstrap-table.css" %}" rel="stylesheet" type="text/css">#}
   {% endcompress %}
   {% compress js %}
     <script src="{% static 'assets/js/main/jquery.min.js' %}"></script>
@@ -49,17 +46,6 @@
     <script src="{% static 'assets/js/lib/jquery.form.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/notifications/noty.min.js' %}"></script>
     <script src="{% static "assets/js/plugins/sortable/jquery-sortable.js" %}"></script>
-    <script src="{% static "redactor/redactor_static.js" %}"></script>
-    <script src="{% static "redactor/plugins/table.js" %}"></script>
-    <script src="{% static "redactor/plugins/fontsize.js" %}"></script>
-    <script src="{% static "redactor/plugins/imagemanager.js" %}"></script>
-    <script src="{% static "redactor/plugins/video.js" %}"></script>
-    <script src="{% static "redactor/plugins/filemanager.js" %}"></script>
-    <script src="{% static "redactor/plugins/alignment.js" %}"></script>
-    <script src="{% static "redactor/plugins/fullscreen.js" %}"></script>
-    <script src="{% static "redactor/plugins/fontcolor.js" %}"></script>
-    <script src="{% static "redactor/plugins/source.js" %}"></script>
-    <script src="{% static "redactor/langs/ru_static.js" %}"></script>
     <script src="{% static "assets/js/lib/jquery.cookie.js" %}"></script>
     <script src="{% static "assets/js/plugins/tables/datatables/datatables.min.js" %}"></script>
     <script src="{% static 'assets/js/plugins/tables/datatables/extensions/buttons.min.js' %}"></script>
@@ -88,14 +74,7 @@
 </head>
 
 <body class="">
-<!-- Main navbar -->
 {% include 'layouts/_main_navbar.html' %}
-<!-- /main navbar -->
-
-<!-- Alternative navbar -->
-{% include 'layouts/_alternative_navbar.html' %}
-<!-- /alternative navbar -->
-
 
 <!-- Page content -->
 <div class="page-content">
@@ -113,20 +92,20 @@
           </div>
         </div>
         {% block breadcrumb %}
-          {% comment %} Два блока breadcrumb и breadcrumbs, чтобы можно было скрывать крошки на странице {% endcomment %}
-          <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
-            <div class="d-flex">
-              <div class="breadcrumb">
-                <a href="{% url 'dashboard:dashboard' %}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> </a>
-                {% block breadcrumbs %}{% render_breadcrumbs 'partials/breadcrumbs.html' %}{% endblock %}
-              </div>
-              {% block breadcrumbs-action %}
-                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
-              {% endblock %}
-
-            </div>
-            {% block breadcrumbs-action-elements %}{% endblock %}
-          </div>
+{#          {% comment %} Два блока breadcrumb и breadcrumbs, чтобы можно было скрывать крошки на странице {% endcomment %}#}
+{#          <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">#}
+{#            <div class="d-flex">#}
+{#              <div class="breadcrumb">#}
+{#                <a href="{% url 'dashboard:dashboard' %}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> </a>#}
+{#                {% block breadcrumbs %}{% render_breadcrumbs 'partials/breadcrumbs.html' %}{% endblock %}#}
+{#              </div>#}
+{#              {% block breadcrumbs-action %}#}
+{#                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>#}
+{#              {% endblock %}#}
+{##}
+{#            </div>#}
+{#            {% block breadcrumbs-action-elements %}{% endblock %}#}
+{#          </div>#}
         {% endblock breadcrumb %}
       </div>
     {% endblock page-header %}
@@ -162,9 +141,6 @@
       </div>
     {% endblock footer %}
   </div>
-  <!-- Right sidebar -->
-{#  {% include 'layouts/_sidebar_right.html' %}#}
-  <!-- /right sidebar -->
 
 </div>
 <!-- /page content -->

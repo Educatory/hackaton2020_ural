@@ -21,6 +21,7 @@ class MunicipalityDetail(DetailView, ContextProcessor):
     section = 'municipality'
     page_title = '<i class="icon-map5 mr-2"></i> Районы/Города'
     model = Municipality
+    context_object_name = 'item'
 
 
 class CriteriaList(ListView, ContextProcessor):

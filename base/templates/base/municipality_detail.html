@@ -3,5 +3,111 @@
 {% load static cookie %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-3">
+            <div class="card bg-indigo-400" style="background-image: url({% static "dashboard/panel_bg.png" %}); background-size: contain;">
+                <div class="card-body text-center">
+                    <div class="card-img-actions d-inline-block mb-3">
+                        <img class="img-fluid" src="{{ item.city.icon.url }}" height="170" alt="">
+                    </div>
 
+                    <h4 class="font-weight-semibold mb-0">{{ item }}</h4>
+                    <span class="d-block opacity-75">Глава: Гаранин Андрей Михайлович</span>
+
+                    <div class="list-icons list-icons-extended mt-3">
+                        <a href="#" class="list-icons-item text-white" data-popup="tooltip" title="" data-container="body" data-original-title="Телефончик"><i class="icon-phone"></i></a>
+                        <a href="#" class="list-icons-item text-white" data-popup="tooltip" title="" data-container="body" data-original-title="Почта"><i class="icon-mailbox"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Карточка города</h5>
+                    <p class="card-text">
+                        {{ item.city.description|safe }}
+                    </p>
+                </div>
+
+                <ul class="list-group list-group-flush border-top">
+                    <li class="list-group-item">
+                        <span class="font-weight-semibold">Глава города:</span>
+                        <div class="ml-auto">Иванова Иванна Ивановна</div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-semibold">Телефон приемной:</span>
+                        <div class="ml-auto">+7 999 999 999</div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-semibold">Электронная почта:</span>
+                        <div class="ml-auto"><a href="#">corporate@yanao.ru</a></div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-semibold">Электронная почта:</span>
+                        <div class="ml-auto"><a href="#">personal@domain.com</a></div>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-semibold">Заместитель главый:</span>
+                        <div class="ml-auto"><a href="#">Сидоров Павел Павлов</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12 criteries">
+            {% for crit in item.criteria.all %}
+                <div class="card card-collapsed">
+                    <div class="card-header header-elements-inline">
+                        <h5 class="card-title">{{ crit }}</h5>
+                        <div class="header-elements">
+                            <div class="list-icons">
+                                <a class="list-icons-item rotate-180" data-action="collapse"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="display: none;">
+                        Полное описание критерия
+                    </div>
+
+                    <div class="table-responsive" style="display: none;">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer bg-light d-flex justify-content-between" style="display: none;">
+                        <div>
+                            <div class="list-icons">
+                                <a href="#" class="list-icons-item btn btn-primary mr-5 text-white">
+                                    <i class="icon-plus2 mr-2"></i>Добавить данные</a>
+                                <a href="#" class="list-icons-item ml-1"><i class="icon-file-pdf"></i></a>
+                                <a href="#" class="list-icons-item ml-1"><i class="icon-file-excel"></i></a>
+                            </div>
+                        </div>
+
+                        <ul class="list-inline list-inline-dotted mb-0 mt-1 mt-sm-0">
+                            <li class="list-inline-item">Обновлен 3 дня назад</li>
+                            <li class="list-inline-item">
+                                <span class="badge bg-warning ml-auto">4.9</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -8,4 +8,5 @@ urlpatterns = [
     path('', IndexPage.as_view(), name="index"),
     path('admin/', admin.site.urls),
     path('', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),
+    path('', include(('base.urls', 'base'), namespace='municipality')),
 ]

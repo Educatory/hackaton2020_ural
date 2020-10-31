@@ -32,8 +32,8 @@ class Region(Location):
 
 class City(Location):
     """Города"""
-    region = models.ForeignKey(Region,
-                               verbose_name=u"Муниципалитет", on_delete=models.CASCADE)
+    # gerb_img = models.ImageField()
+    region = models.ForeignKey(Region, verbose_name=u"Район", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Город'

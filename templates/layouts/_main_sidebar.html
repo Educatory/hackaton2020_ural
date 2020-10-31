@@ -1,0 +1,346 @@
+{% load static thumbnail support menubuilder whoiswho %}{% support_unread_count request.site as unread_count %}
+<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+    <div id="nav_active" hidden>{{ section }}</div>
+    <!-- Sidebar mobile toggler -->
+    <div class="sidebar-mobile-toggler text-center">
+        <a href="#" class="sidebar-mobile-main-toggle">
+            <i class="icon-arrow-left8"></i>
+        </a>
+        Навигация
+        <a href="#" class="sidebar-mobile-expand">
+            <i class="icon-screen-full"></i>
+            <i class="icon-screen-normal"></i>
+        </a>
+    </div>
+    <!-- /sidebar mobile toggler -->
+
+
+    <!-- Sidebar content -->
+    <div class="sidebar-content">
+
+        <!-- User menu -->
+        <div class="sidebar-user-material">
+            <div class="sidebar-user-material-body">
+                <div class="card-body text-center">
+                    <a href="{% url 'admin:dashboard:main' %}">
+                        {% thumbnail request.site.logo "80x80" crop="center" format="PNG" as im %}
+                            <img src="{{ im.url }}" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80"
+                                 alt="{{ request.site.name }}">
+                        {% endthumbnail %}
+                    </a>
+                    <h6 class="mb-0 text-white text-shadow-dark">{{ request.site }}</h6>
+                    <span class="font-size-sm text-white text-shadow-dark">{{ request.site.address }}</span>
+                </div>
+
+                <div class="sidebar-user-material-footer">
+                    <a href="#user-nav"
+                       class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle legitRipple collapsed"
+                       data-toggle="collapse" aria-expanded="false"><span>Ваша организация</span></a>
+                </div>
+            </div>
+
+            <div class="collapse" id="user-nav" style="">
+                <ul class="nav nav-sidebar">
+                    <li class="nav-item">
+                        <a data-active="profile" href="{% url 'admin:cabinet:profile' %}" class="nav-link legitRipple">
+                            <i class="icon-user-plus"></i>
+                            <span>Профиль</span>
+                        </a>
+                    </li>
+                    {% if request.site.adminmodulesettings.payment %}
+                        <li class="nav-item">
+                            <a data-active="payment" href="{% url 'admin:cabinet:payment' %}" class="nav-link legitRipple">
+                                <i class="fas fa-ruble-sign"></i>
+                                <span>Оплата</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {#          <li class="nav-item">#}
+                    {#            <a href="#" class="nav-link legitRipple">#}
+                    {#              <i class="icon-comment-discussion"></i>#}
+                    {#              <span>Техническая поддержка</span>#}
+                    {#              <span class="badge {% if unread_count > 0 %}bg-warning-400{% else %}bg-success-400{% endif %} badge-pill align-self-center ml-auto">{{ unread_count }}</span>#}
+                    {#            </a>#}
+                    {#          </li>#}
+
+                    <li class="nav-item">
+                        <a href="{% url 'service_logout' %}" class="nav-link legitRipple">
+                            <i class="icon-switch2"></i>
+                            <span>Выход</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /user menu -->
+        <!-- Main navigation -->
+        <div class="card card-sidebar-mobile">
+            <ul class="nav nav-sidebar" data-nav-type="accordion">
+
+                <!-- Main -->
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">Главное</div>
+                    <i class="icon-menu" title="Главное"></i>
+                </li>
+                <li class="nav-item">
+                    <a data-active="dashboard" href="{% url 'admin:dashboard:main' %}" class="nav-link">
+                        <i class="icon-home4"></i>
+                        <span>
+									Панель управления
+{#									<span class="d-block font-weight-normal opacity-50">No active orders</span>#}
+								</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-info3"></i> <span>Сведения об ОО</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="{% get_menu_name request.site 'sveden' %}">
+                        <li class="nav-item">
+                            <a data-active="sveden_common" class="nav-link" href="{% url 'admin:sveden:common:item' %}">
+                                {% get_menu_name request.site 'common' %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-active="sveden_struct" class="nav-link" href="{% url 'admin:sveden:struct:tree' %}">
+                                Структура управления</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-active="sveden_documents" href="{% url 'admin:sveden:documents:list' %}">
+                                {% get_menu_name request.site 'document' %}
+                            </a>
+                        </li>
+                        <li class="nav-item" data-active="sveden_education">
+                            <a class="nav-link" href="{% url 'admin:sveden:levels:list' %}">
+                                {% get_menu_name request.site 'education' %}</a>
+                        </li>
+                        <li class="nav-item" data-active="sveden_edustandarts">
+                            <a class="nav-link" href="{% url 'admin:sveden:edustandarts:list' %}">
+                                Образ. стандарты</a>
+                        </li>
+                        <li class="nav-item" data-active="sveden_employees">
+                            <a class="nav-link" href="{% url 'admin:sveden:employees:list' %}">
+                                Руководство. Педсостав</a>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a class="nav-link" href="#">МТО</a>
+                            <ul class="nav-group-sub" data-submenu-title="{% get_menu_name request.site 'objects' %}">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-active="sveden_mto_share" href="{% url 'admin:sveden:mto:share' %}">Общая
+                                        информация</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-active="sveden_mto_objects" href="{% url 'admin:sveden:mto:objects:list' %}">
+                                        Объекты</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-active="sveden_mto_library"href="{% url 'admin:sveden:mto:library:list' %}">
+                                        Библиотеки, питание, здоровье</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-active="sveden_mto_sport" href="{% url 'admin:sveden:mto:sport:list' %}">
+                                        Объекты спорта</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-active="sveden_mto_ovz"href="{% url 'admin:sveden:mto:ovz' %}">
+                                        Информация ОВЗ</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" data-active="sveden_mto_room"
+                                                        href="{% url 'admin:sveden:mto:room:list' %}">
+                                    Средства обучения и воспитания</a></li>
+                                <li class="nav-item"><a class="nav-link" data-active="sveden_mto_eor"
+                                                        href="{% url 'admin:sveden:mto:eor:list' %}">
+                                    ЭОРы</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-active="sveden_grants" href="{% url 'admin:sveden:grants' %}">
+                                Стипендии и поддержки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-active="sveden_paid_edu" href="{% url 'admin:sveden:paid_edu' %}">
+                                Платные услуги</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" data-active="sveden_budget" href="{% url 'admin:sveden:budget' %}">
+                            ФХД</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-active="sveden_vacant" href="{% url 'admin:sveden:vacant:list' %}">
+                                Вакантные места</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-active="sveden_history" href="{% url 'admin:sveden:history' %}">
+                                История</a></li>
+                        <li class="nav-item"><a class="nav-link" data-active="sveden_intarnational"
+                                                href="{% url 'admin:sveden:international' %}">
+                            {% get_menu_name request.site 'international' %}</a></li>
+                    </ul>
+                </li>
+                {% if request.site.adminmodulesettings.branch %}
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-lan2"></i> <span>Филиалы и Объединения</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="Филиалы и Группы">
+                            <li class="nav-item">
+                                <a data-active="admin_branch" href="{% url 'admin:branch:list' %}" class="nav-link">Филиалы</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-active="admin_unions" href="{% url 'admin:unions:list' %}" class="nav-link">Объединения</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-stack"></i> <span>Все документы</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Все документы">
+                        <li class="nav-item"><a data-active="documents" href="{% url 'admin:documents:list' %}" class="nav-link">Документы</a></li>
+                        <li class="nav-item"><a data-active="documents-category" href="{% url 'admin:documents:category:list' %}" class="nav-link">Категории</a></li>
+                    </ul>
+                </li>
+                {% if request.site.adminmodulesettings.processes %}
+                    {% get_menu_name request.site 'processes' as processes_name %}
+                    <li class="nav-item nav-item-submenu"><a href="#" class="nav-link"><i
+                            class="icon-width"></i> <span>{{ processes_name|truncatechars:30 }}</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="{{ processes_name|truncatechars:30 }}">
+                            <li class="nav-item">
+                                <a data-active="process" class="nav-link" href="{% url 'admin:process:list' %}">{{ processes_name }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-active="process-category" class="nav-link" href="{% url 'admin:process:category:list' %}"> Категории</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+
+                {% if request.site.adminmodulesettings.audit %}
+                    {% get_menu_name request.site 'forstudents' as forstudents_name %}
+                    <li class="nav-item nav-item-submenu"><a class="nav-link" href="#"><i
+                            class="icon-megaphone"></i> <span>Инфоблоки</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Информационные блоки">
+                            {% if request.site.type == 'KT' %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"> &middot; Абитуриентам</a>
+                                    <ul>
+                                        {% get_menu_name request.site 'Abitur' as Abitur_name %}
+                                        <li class="nav-item"><a class="nav-link" data-active="admin_abitur"
+                                                                href="{% url 'admin:audit:abitur' %}">
+                                            {{ Abitur_name }}</a></li>
+
+                                        <li class="nav-item"><a class="nav-link" data-active="audit-abiturients"
+                                                                href="{% url 'admin:audit:abiturients:list' %}">
+                                            Информация</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                            {% if request.site.type != 'DT' %}
+                                <li class="nav-item"><a class="nav-link" data-active="audit-students"
+                                                        href="{% url 'admin:audit:students:list' %}">
+                                    {{ forstudents_name }}</a></li>
+                            {% endif %}
+                            <li class="nav-item"><a class="nav-link" data-active="audit-teachers"
+                                                    href="{% url 'admin:audit:teachers:list' %}">Педагогам</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" data-active="audit-parents"
+                                                    href="{% url 'admin:audit:parents:list' %}">
+                                Родителям</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                {% endif %}
+                <!-- Layout -->
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">Активность</div>
+                    <i class="icon-calendar2" title="Активность"></i></li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-calendar2"></i> <span>Объявления, Новости, Мероприятия</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Объявления, Новости, Мероприятия">
+                        <li class="nav-item">
+                            <a data-active="admin_ad" href="{% url "admin:ad:list" %}" class="nav-link">
+                                <i class="icon-power2"></i> Объявления</a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-active="admin_news" href="{% url "admin:news:list" %}" class="nav-link">
+                                <i class="icon-magazine"></i>Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-active="event" href="{% url "admin:events:index" %}" class="nav-link">
+                                <i class="icon-calendar"></i>Календарь мероприятий</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-presentation"></i> <span>Медиа</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Медиа">
+                        <li class="nav-item">
+                            <a data-active="admin_gallery" href="{% url "admin:gallery:list" %}" class="nav-link"><i class="icon-images3"></i> Фотогалерея</a>
+                        </li>
+                        {% if request.site.adminmodulesettings.video %}
+                            <li class="nav-item">
+                                <a data-active="admin_video" href="{% url "admin:gallery:video:list" %}" class="nav-link">Видео</a>
+                            </li>
+                        {% endif %}
+                        {% if request.site.adminmodulesettings.achievements %}
+                            <li class="nav-item">
+                                <a data-active="admin_achievements" href="{% url "admin:gallery:achievements:list" %}" class="nav-link">Достижения</a>
+                            </li>
+                        {% endif %}
+                        {% if request.site.adminmodulesettings.magazine %}
+                            <li class="nav-item">
+                                <a data-active="admin_magazine" href="{% url "admin:gallery:magazine:list" %}" class="nav-link ">Газеты</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a data-active="excursion" href="{% url "admin:gallery:excursion_edit" %}" class="nav-link ">Виртуальная экскурсия</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-pushpin"></i> <span>Баннеры и Партнеры</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Баннеры и Партнеры">
+                        <li class="nav-item ">
+                            <a data-active="banner" href="{% url 'admin:ad:banner:list' %}" class="nav-link">Баннеры</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a data-active="partner" href="{% url 'admin:ad:partners:list' %}" class="nav-link">Партнеры</a>
+                        </li>
+                    </ul>
+                </li>
+                {% if request.site.adminmodulesettings.statements %}
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-newspaper"></i> <span>Зачисление в ОО</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Зачисление в ОО">
+                            <li class="nav-item">
+                                <a data-active="statement" href="{% url 'admin:enrollment:index' %}" class="nav-link">Заявления</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-active="statement_settings" href="{% url 'admin:enrollment:settings' %}" class="nav-link">Настройки</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-bubbles5"></i> <span>Обращения и отзывы</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Обращения граждан">
+                        <li class="nav-item">
+                            <a data-active="faq" href="{% url 'admin:faq:list' %}" class="nav-link"><i class="icon-bubbles3"></i>Обращения граждан
+                                <span class="badge {% if new_questions > 0 %}bg-warning-400{% else %}bg-success-400{% endif %} badge-pill align-self-center ml-auto">{{ new_questions }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-active="faq-themes" href="{% url 'admin:faq:theme_list' %}" class="nav-link"><i class="icon-bubbles3"></i>Счетчик и Темы обращений
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-active="reviews" href="{% url 'admin:reviews:list' %}" class="nav-link">
+                                <i class=" icon-bubble-lines3"></i>Отзывы с сайта
+                                <span class="badge {% if new_reviews > 0 %}bg-warning-400{% else %}bg-success-400{% endif %} badge-pill ml-auto">{{ new_reviews }}</span>
+                            </a>
+
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a data-active="admin_poll" href="{% url 'admin:poll:list' %}" class="nav-link"><i class="icon-stats-bars3"></i>
+                        <span>Опросы</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

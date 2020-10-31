@@ -1,0 +1,56 @@
+{% load widget_tweaks url_split %}
+
+<!-- {{ field.label }} -->
+<div class="form-group row">
+    <label class="col-lg-3 col-form-label font-weight-semibold {% if field.field.required %}text-semibold{% endif %} {% if field.errors %}text-danger{% endif %}">{{ field.label }}
+        {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+    </label>
+    {% if not help_icon %}
+        <div class="col-lg-9">
+            <input type="file" class="file-input {{ input_class }}" name="{{ field.name }}" id="{{ field.auto_id }}"
+                   {% if field.value %}data-initial-preview="<img src='/media/{{ field.value }}' height=100% class='file-preview-image'>"{% endif %}
+                   data-initial-caption="{{ field.value|url_split }}"
+                   value="{{ field.value|url_split }}">
+            <span class="form-text text-muted">{{ field.help_text }}</span>
+        </div>
+    {% else %}
+        <div class="col-lg-8">
+            <input type="file" class="file-input {{ input_class }}" name="{{ field.name }}" id="{{ field.auto_id }}"
+                   {% if field.value %}data-initial-preview="<img src='/media/{{ field.value }}' height=100% class='file-preview-image'>"{% endif %}
+                   data-initial-caption="{{ field.value|url_split }}"
+                   value="{{ field.value|url_split }}">
+        </div>
+        <div class="col-lg-1">
+            <button type="button" class="btn btn-light" data-popup="popover"
+                    data-trigger="hover" data-content="{{ field.help_text }}">
+                <i class="icon-help"></i></button>
+        </div>
+    {% endif %}
+</div>
+
+{#<div class="{% if class %}{{ class }}{% else %}form-group row{% endif %}">#}
+{#  <label class="col-lg-3 col-form-label {% if field.field.required %}text-semibold{% endif %} {% if field.errors %}text-danger{% endif %}"#}
+{#         for="{{ field.auto_id }}">#}
+{#    {{ field.label }}#}
+{#    {% if field.field.required %}<span class="text-danger">*</span>{% endif %}#}
+{#  </label>#}
+{##}
+{#  <div class="col-lg-9">#}
+{#    <input type="file" class="{{ input_class }}" name="{{ field.name }}" id="{{ field.auto_id }}"#}
+{#           data-show-upload="false" maxlength="{{ field.field.max_length }}"#}
+{#            {% if field.value %}#}
+{#           data-initial-preview="<img src='/media/{{ field.value }}' class='file-preview-image'>"#}
+{#           data-initial-caption="{{ field.value|url_split }}"#}
+{#           value="{{ field.value|url_split }}"#}
+{#            {% endif %}#}
+{#    >#}
+{#    {% comment %} Чекбокс для удаления файла{% endcomment %}#}
+{#    <input id="{{ field.name }}-clear_id" name="{{ field.name }}-clear" type="checkbox" style="display: none">#}
+{#    <small class="form-text text-muted">#}
+{#      {% for error in field.errors %}#}
+{#        <span class="text-danger">{{ error }}</span>#}
+{#      {% endfor %}#}
+{#      {{ field.help_text }}#}
+{#    </small>#}
+{#  </div>#}
+{#</div>#}

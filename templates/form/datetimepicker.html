@@ -1,0 +1,19 @@
+{% load widget_tweaks %}
+
+<!-- {{ field.label }}-->
+
+
+<div class="{% if class %}{{ class }}{% else %}form-group row{% endif %}">
+  <label class="col-lg-4 {% if field.field.required or required %} text-semibold{% endif %}
+         {% if field.errors %}text-danger{% endif %} cursor-pointer" for="{{ field.auto_id }}">
+    {% if its_new_field %}
+      <span class="label label-primary">Новое</span>
+    {% endif %}
+    {{ field.label }}
+    {% if field.field.required or required %}<span class="text-danger">*</span>{% endif %}
+  </label>
+  <div class="col-lg-4">
+    {{ field }}
+  </div>
+</div>
+

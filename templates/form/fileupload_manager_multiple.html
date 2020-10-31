@@ -1,0 +1,21 @@
+{% load widget_tweaks  %}
+
+{% comment %}
+    dom - ID селекта, куда нужно вставить(изменить) выбранное значение из Менеджера изображений
+    ids - ID элемента(ов), которые уже выбраные, обычно при редактировании.
+{% endcomment %}
+
+<div class="row">
+
+    <div class="{% if class %}{{ class }}{% else %}col-md-12{% endif %}">
+        <label>
+            {{ label_title }}
+        </label>
+        <div>
+            <button id="get_file_manager" type="button" class="btn btn-info btn-xs mb-10 btn-labeled btn-labeled-left"
+                    data-dom="{{ dom }}" data-ids="{{ ids }}">
+                <b><i class="icon-folder5 position-left"></i></b> {{ btn_title }}
+            </button>
+        </div>
+    </div>
+</div>

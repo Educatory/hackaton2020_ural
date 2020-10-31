@@ -1,0 +1,45 @@
+{% load widget_tweaks %}
+
+<!-- {{ field.label }} -->
+    <div class="{% if class %}{{ class }}{% else %}form-group row{% endif %}">
+        <label class="col-lg-3 col-form-label {% if field.field.required %}text-semibold{% endif %}
+         {% if field.errors %}text-danger{% endif %} cursor-pointer" for="{{ field.auto_id }}">
+            {{ field.label}}
+            {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+        </label>
+    {% if not help_icon %}
+        <div class="col-lg-9">
+            {% render_field field class=input_class %}
+            {% if field.errors %}
+                <div class="form-control-feedback text-danger">
+                    <i class="icon-cancel-circle2"></i>
+                </div>
+            {% endif %}
+            <span class="help-block text-muted">
+                    {% for error in field.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                {{ field.help_text }}
+            </span>
+        </div>
+    {% else %}
+        <div class="col-lg-8">
+            {% render_field field class=input_class %}
+            {% if field.errors %}
+                <div class="form-control-feedback text-danger">
+                    <i class="icon-cancel-circle2"></i>
+                </div>
+            {% endif %}
+            <span class="help-block text-muted">
+                    {% for error in field.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+            </span>
+        </div>
+        <div class="col-lg-1">
+            <button type="button" class="btn btn-light" data-popup="popover"
+                    data-trigger="hover" data-content="{{ field.help_text }}">
+                <i class="icon-help"></i></button>
+        </div>
+    {% endif %}
+    </div>

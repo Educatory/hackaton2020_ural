@@ -1,0 +1,12 @@
+<div id="toolbar" class="text-right">
+  <button id="table-data-ajax-delete" type="button" title="Удалить"
+          class="btn bg-danger-400 btn-xs btn-icon" disabled>
+    {% csrf_token %}
+    <b><i class="icon-trash position-left"></i></b>
+  </button>
+  <a class="btn btn-primary btn-xs btn-labeled btn-labeled-left" href="add/">
+    <b><i class="icon-plus3 "></i></b>Создать
+  </a>
+  {% include 'limit_admin2/partials/datatables/_filter_status_publish.html' %}
+</div>
+

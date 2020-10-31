@@ -1,0 +1,6 @@
+
+<select class="colorselector" name="{{ name.name }}">
+    {% for x,y in field.choices %}
+        <option value="{{ x }}"{% if name.value == x %} selected="selected"{% endif %} data-color={{ y }}>{{ y }}</option>
+    {% endfor %}
+</select>

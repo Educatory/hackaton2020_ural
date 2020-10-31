@@ -1,0 +1,24 @@
+{% load pytils_numeral %}
+{% if text %}
+    <span  title="" class=" position-left">
+        <i class="icon-thumbs-up2"> </i>
+            <span class="f12">
+                {% if object.total_upvotes != 0 %}
+                    &nbsp;{{ object.total_upvotes}} {{ object.total_upvotes|choose_plural:"пользователю,пользователям,пользователям" }} понравилось
+                {% else %}
+                    Еще не оценили
+                {% endif %}
+            </span>
+
+    </span>
+{% else %}
+    <span data-popup="tooltip" data-delay="200" data-original-title="Понравилось" class="pull-right position-left">
+        <i class="icon-thumbs-up2"> </i>
+            <span class="f12">
+                {% if object.total_upvotes != 0 %}
+                    &nbsp;{{ object.total_upvotes}}
+                {% endif %}
+            </span>
+
+    </span>
+{% endif %}

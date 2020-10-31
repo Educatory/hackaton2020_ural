@@ -1,0 +1,31 @@
+<div class="modal fade" id="get-call-user">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content solid">
+            <div class="modal-header bg-info">
+                <h6 class="modal-title">Заказать звонок</h6>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'admin:cabinet:support:call-user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group-feedback form-group-feedback-left">
+                        <input required id="id_name" name="name" maxlength="55" type="text" class="form-control input-lg" placeholder="Ваше имя">
+                        <div class="form-control-feedback">
+                            <i class="icon-user"></i>
+                        </div>
+                    </div>
+                    <div class="form-group-feedback form-group-feedback-left mt-3">
+                        <input required id="id_phone" name="phone" maxlength="55"  type="text" class="form-control input-lg" placeholder="Телефон">
+                        <div class="form-control-feedback">
+                            <i class="icon-phone"></i>
+                        </div>
+                    </div>
+                    <input required hidden name="url" value="{{ request.build_absolute_uri }}">
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-info mt-3">Заказать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

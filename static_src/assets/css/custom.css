@@ -1,0 +1,245 @@
+/* montserrat-200 - cyrillic_latin_cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-200.eot'); /* IE9 Compat Modes */
+  src: local('Montserrat ExtraLight'), local('Montserrat-ExtraLight'),
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-200.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-200.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-200.woff') format('woff'), /* Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-200.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-200.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-300 - cyrillic_latin_cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-300.eot'); /* IE9 Compat Modes */
+  src: local('Montserrat Light'), local('Montserrat-Light'),
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-300.woff') format('woff'), /* Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-300.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-regular - cyrillic_latin_cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-regular.eot'); /* IE9 Compat Modes */
+  src: local('Montserrat Regular'), local('Montserrat-Regular'),
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-regular.woff') format('woff'), /* Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-italic - cyrillic_latin_cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-italic.eot'); /* IE9 Compat Modes */
+  src: local('Montserrat Italic'), local('Montserrat-Italic'),
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-italic.woff') format('woff'), /* Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-italic.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-500 - cyrillic_latin_cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-500.eot'); /* IE9 Compat Modes */
+  src: local('Montserrat Medium'), local('Montserrat-Medium'),
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-500.woff') format('woff'), /* Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-500.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-700 - cyrillic_latin_cyrillic-ext */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-700.eot'); /* IE9 Compat Modes */
+  src: local('Montserrat Bold'), local('Montserrat-Bold'),
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-700.woff') format('woff'), /* Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../../mainpage/v2/assets/fonts/montserrat-v12-cyrillic_latin_cyrillic-ext-700.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* alegreya-regular - cyrillic_latin_cyrillic-ext */
+@font-face {
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../../mainpage/v2/assets/fonts/alegreya-v10-cyrillic_latin_cyrillic-ext-regular.eot'); /* IE9 Compat Modes */
+  src: local('Alegreya Regular'), local('Alegreya-Regular'),
+       url('../../../mainpage/v2/assets/fonts/alegreya-v10-cyrillic_latin_cyrillic-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../../mainpage/v2/assets/fonts/alegreya-v10-cyrillic_latin_cyrillic-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/alegreya-v10-cyrillic_latin_cyrillic-ext-regular.woff') format('woff'), /* Modern Browsers */
+       url('../../../mainpage/v2/assets/fonts/alegreya-v10-cyrillic_latin_cyrillic-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../../mainpage/v2/assets/fonts/alegreya-v10-cyrillic_latin_cyrillic-ext-regular.svg#Alegreya') format('svg'); /* Legacy iOS */
+}
+
+body {
+    font-family: "Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.fa-spin {
+    -webkit-animation: fa-spin 2s linear infinite;
+    animation: fa-spin 2s linear infinite;
+}
+
+.fa-pulse {
+    -webkit-animation: fa-spin 1s steps(8) infinite;
+    animation: fa-spin 1s steps(8) infinite;
+}
+
+.dataTables_processing {
+    height: 100px;
+}
+
+
+.navbar-brand {
+    padding-top: 0.50002rem;
+    padding-bottom: 0.50002rem;
+}
+
+.navbar-brand img {
+    height: 2rem;
+}
+
+
+.sidebar-user-material .sidebar-user-material-body {
+    background: url(../../img/backgrounds/user_bg4.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.sidebar-user-material-footer > a {
+    padding: .625rem 1.25rem;
+    display: block;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .15);
+    transition: background-color ease-in-out .15s;
+}
+
+.sidebar-dark .sidebar-user-material .collapse {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+@media (min-width: 768px) {
+    .sidebar-xs .sidebar-user-material-footer > a {
+        padding: 1.25rem;
+    }
+}
+
+.sidebar-user-material-footer > a {
+    padding: .625rem 1.25rem;
+    display: block;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .15);
+    transition: background-color ease-in-out .15s;
+}
+
+@media (min-width: 768px) {
+    .sidebar-xs .sidebar-user-material-footer > a > span {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar-xs .sidebar-user-material-body > .card-body {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar-xs .sidebar-user-material-footer > a:after {
+        margin: auto;
+    }
+}
+
+.sidebar-user-material-footer > a:after {
+    transition: all ease-in-out .15s;
+}
+
+
+.page-title {
+    padding: 1rem 0;
+    position: relative;
+}
+
+.file-caption-name {
+    width: 85%;
+    padding-left: 10px;
+}
+
+.sidebar-dark .nav-sidebar .nav-item>.nav-link.active, .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item>.nav-link.active {
+    background-color: rgb(91 106 192);
+    color: #fff;
+}
+.hidden {
+    display: none!important;
+}
+
+.breadcrumb-item, .breadcrumb-elements-item  {
+    padding: .525rem 0;
+}
+
+.alert-success .alert-link {
+    color: #2196f3;
+}
+.bootstrap-table .table:not(.table-condensed), .bootstrap-table .table:not(.table-condensed) > tbody > tr > th, .bootstrap-table .table:not(.table-condensed) > tfoot > tr > th, .bootstrap-table .table:not(.table-condensed) > thead > tr > td, .bootstrap-table .table:not(.table-condensed) > tbody > tr > td, .bootstrap-table .table:not(.table-condensed) > tfoot > tr > td {
+    padding: 5px;
+}
+
+.nav-group-sub .nav-group-sub .nav-link {
+    padding-left: 2rem;
+}
+.tariff-item {
+    border: 2px solid #0277BD;
+    min-height: 200px;
+}
+
+.tariff-item:hover {
+    cursor: pointer;
+}
+
+.tariff-wrapper input[type=radio] {
+    display: none;
+}
+
+.tariff-wrapper input:checked + label {
+    background-color: #0277BD;
+    color: #fff;
+}
+.check {
+    visibility: hidden;
+    font-size: 36px;
+}
+.tariff-wrapper input:checked  + label .check {
+    visibility: visible;
+}
+
+.tariff-wrapper input.radio:checked + label:before {
+    content: "";
+}
+.tariff-title {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.card-widgets img {
+    max-width: 100%;
+}

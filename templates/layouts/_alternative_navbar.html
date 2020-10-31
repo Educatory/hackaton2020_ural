@@ -1,0 +1,78 @@
+{% load support %}{% support_unread_count request.site as unread_count %}
+<div class="navbar navbar-expand-md navbar-dark bg-indigo-400 navbar-sticky">
+  <div class="text-center d-md-none w-100">
+    <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-second">
+      <i class="icon-unfold mr-2"></i>
+      Помощь
+    </button>
+  </div>
+
+  <div class="navbar-collapse collapse" id="navbar-second">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+          <i class="icon-indent-increase2"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'admin:cabinet:profile' %}" title="Идентификатор: К-{{ request.site.id }}" class="navbar-nav-link"><i
+                class="text-warning icon-stamp"></i>&nbsp; ID: К-{{ request.site.id }}</a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'admin:cabinet:support:list' %}" class="navbar-nav-link">
+          Сообщения техподдержки
+          <span class="badge badge-pill {% if unread_count %}bg-warning-300{% else %}bg-success{% endif %} position-static ml-auto ml-md-2">{{ unread_count }}</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
+          Добавить
+        </a>
+
+        <div class="dropdown-menu">
+          <a href="{% url 'admin:sveden:employees:add' %}" class="dropdown-item">Педагога</a>
+          <a href="{% url 'admin:documents:add' %}" class="dropdown-item">Документ</a>
+          <a href="{% url 'admin:ad:add' %}" class="dropdown-item">Объявление</a>
+          <a href="{% url 'admin:news:add' %}" class="dropdown-item">Новость</a>
+          <a href="{% url 'admin:events:add' %}" class="dropdown-item">Мероприятие</a>
+          <a href="{% url 'admin:gallery:add' %}" class="dropdown-item">Фотоальбом</a>
+          <a href="{% url 'admin:poll:add_category' %}" class="dropdown-item">Опрос</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-md-auto">
+      <li class="nav-item">
+        <a data-action="help" data-section="{{ section }}" href="#" class="navbar-nav-link">
+            <i class=" icon-question4 position-left"></i>
+          Помощь по разделу
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
+          <i class="icon-lifebuoy"></i>
+          Помощь
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="tel:8 800-222-05-11" class="dropdown-item">
+            <i class="icon-phone"></i>
+            <strong>8 800-222-05-11</strong>
+            <br>
+            <small class=""><label class="label label-info"> с 7:00 до 15:00 МСК</label></small>
+          </a>
+          <a href="#" class="dropdown-item" data-toggle="modal" data-target="#get-call-user"><i class="icon-phone-wave"></i> Заказать звонок</a></a>
+          <a href="#" class="dropdown-item" data-toggle="modal" data-target="#add-support-form"><i class="icon-quill2"></i> Написать в техподдержку</a>
+          <a href="{% url 'admin:cabinet:support:list' %}" class="dropdown-item"><i class="icon-headset"></i> Мои заявки в техподдержку</a>
+          <a class="dropdown-item" href=mailto:info@siteedu.ru"><i class="icon-envelope"></i> info@siteedu.ru</a>
+          <div class="dropdown-divider"></div>
+          <a href="{% url 'admin:instructions:list' %}" class="dropdown-item"><i class="icon-books"></i> Инструкции</a>
+        </div>
+      </li>
+      <li class="nav-item">
+					<a href="#" class="navbar-nav-link sidebar-control sidebar-right-toggle d-none d-md-block">
+						<i class="icon-indent-decrease2"></i>
+					</a>
+				</li>
+    </ul>
+  </div>
+</div>

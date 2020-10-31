@@ -1,0 +1,7 @@
+<div class="form-check form-check-switchery {% if inline %}form-check-inline{% endif %} {% if class %}{{ class }}{% endif %}">
+  <label class="form-check-label">
+    <input type="checkbox" name="{{ field.name }}" class="form-check-input-switchery" {% if field.value %}checked{% endif %}
+           {% if disabled %}disabled="disabled"{% endif %} data-fouc>
+    {% if not nolabel %}{{ field.label }}{% endif %}
+  </label>
+</div>

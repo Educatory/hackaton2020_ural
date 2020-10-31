@@ -1,0 +1,31 @@
+{% load widget_tweaks %}
+
+{% comment %}
+-TODO
+Нужно вывести в форму реадактирования файла в readonly:
+    1. Когда создан файл.
+    2. Когда изменен файл.
+    3. Сколько весит.
+    4. Какой у него mimetypes.
+{% endcomment %}
+
+<div id="file_manager_form_edit" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Редактирование</h5>
+                <button type="button" data-dismiss="modal" class="close">&times;</button>
+            </div>
+            <form action="{% url 'admin:file_manager:edit' object.id %}" method="post" enctype="{{ form.get_enctype }}">
+                <div class="modal-body">
+                    <div class="form-group">
+                        {% include "limit_admin/form/ff.html" with field=form.name %}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-link">Закрыть</button>
+                    <button type="submit" class="btn bg-teal-400"><i class="icon-checkmark3 position-left"></i>Сохранить</button>                </div>
+            </form>
+        </div>
+    </div>
+</div>

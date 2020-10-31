@@ -1,0 +1,51 @@
+<!-- Basic modal -->
+<div id="file_manager_modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Менеджер изображений</h5>
+                <button type="button" class="close btn-close-fm">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-primary no-border f12">
+                    <i class="icon-info3"></i> Выбор изображения доступен по двойному клику.
+                </div>
+                <button type="button" class="ImageManager-submit btn btn-success btn-xs btn-labeled btn-labeled-left mr-2" disabled>
+                    <b><i class="icon-check position-left"></i></b>
+                    Выбрать
+                </button>
+                <button id="ImageManager-add" type="button" class="btn btn-primary btn-xs btn-labeled btn-labeled-left" data-url="#" data-toggle="modal"
+                        data-target="#file_manager_form">
+                    <b><i class="icon-plus3 position-left"></i></b>
+                    Загрузить изображение
+                </button>
+                <table id="ImageManager-table" data-radio="true" data-checkbox="false"
+                       data-url="{% url 'admin:file_manager:get_images_json' %}"></table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link btn-close-fm">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /basic modal -->
+
+<div id="file_manager_form" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Загрузка изображений</h5>
+                <button type="button" data-dismiss="modal" class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div> Максимальный размер файла - 10 Мб. В процессе загрузки - файлы будут сжаты.</div>
+                <form action="{% url 'admin:file_manager:images_add' %}" class="dropzone" id="dropzonefiles2"></form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-link">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{% load widget_tweaks %}
+
+<!-- {{ field.label }}-->
+
+
+<div class="{% if class %}{{ class }}{% else %}form-group{% endif %}">
+  <label class="col-lg-12 cursor-pointer {% if field.field.required or required %} text-semibold{% endif %}
+         {% if field.errors %}text-danger{% endif %}" for="{{ field.auto_id }}">
+    {% if its_new_field %}
+      <span class="label label-primary">Новое</span>
+    {% endif %}
+        {% if help_icon %}
+            <button type="button" class="btn btn-light" data-popup="popover"
+                    data-trigger="hover" data-content="{{ field.help_text }}">
+                <i class="icon-help"></i></button>
+        {% endif %}
+    {{ field.label }}
+    {% if field.field.required or required %}<span class="text-danger">*</span>{% endif %}
+  </label>
+  <div class="col-lg-12">
+    {{ field }}
+  </div>
+  <small class="form-text text-muted">
+    {% for error in field.errors %}
+      <span class="text-danger">{{ error }}</span>
+    {% endfor %}
+    {% if not help_icon %}{{ field.help_text }}{% endif %}
+  </small>
+</div>

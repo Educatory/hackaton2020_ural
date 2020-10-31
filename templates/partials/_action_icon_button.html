@@ -1,0 +1,55 @@
+{#t_file - ссылка на документ#}
+{#url_site - ссылка на страницу объекта на сайте#}
+
+<div class="btn-group">
+    <button type="button" class="btn bg-purple-300 btn-icon dropdown-toggle btn-sm" data-toggle="dropdown"
+            {% if disabled %}disabled{% endif %}>
+        <i class="icon-link"></i>
+    </button>
+
+    <div class="dropdown-menu dropdown-menu-right">
+        <a href="{{ url_edit }}" data-item-edit='{{ t_id }}' class="dropdown-item"><i class="text-primary icon-pencil4"></i>
+            {% if text_edit %}{{ text_edit }}{% else %}Редактировать{% endif %}</a>
+        {% if url_site %}
+            <a href="{{ url_site }}" class="dropdown-item"><i class="text-info icon-file-eye"></i> Страница на сайте</a>
+        {% endif %}
+        {% if t_file %}
+            <a href="/media/{{ t_file }}" class="dropdown-item"><i class="text-info icon-file-eye"></i> Скачать/Смотреть</a>
+        {% endif %}
+        {% if url_drop %}
+            <a href="{{ url_drop }}" class="dropdown-item"><i class="text-warning icon-database-refresh"></i> Обнулить</a>
+        {% endif %}
+        {% if url_archive %}
+            <a href="{{ url_archive }}" class="dropdown-item"><i class="text-warning icon-x"></i> В архив</a>
+        {% endif %}
+        {% if url_delete %}
+            <a href="{{ url_delete }}" class="dropdown-item"><i class="text-warning icon-x"></i> Удалить</a>
+        {% endif %}
+        {% if url_gallery %}
+            <div class="dropdown-divider"></div>
+            <a href="{{ url_gallery }}" class="dropdown-item"><i class="text-info icon-images3"></i> Фотоальбом</a>
+        {% endif %}
+        {% if url_program %}
+            <div class="dropdown-divider"></div>
+            <a href="{{ url_program }}" class="dropdown-item"><i class="text-info icon-plus2"></i> Добавить программу</a>
+        {% endif %}
+        {% if url_jobs %}
+            <div class="dropdown-divider"></div>
+            <a href="{{ url_jobs }}" class="dropdown-item"><i class="text-info icon-plus2"></i> Добавить рабочую программу</a>
+        {% endif %}
+        {% if url_portfolio %}
+            <div class="dropdown-divider"></div>
+            <a href="{{ url_portfolio }}" class="dropdown-item"><i class="text-info icon-portfolio"></i> Портфолио</a>
+        {% endif %}
+        {% if url_furniture %}
+            <div class="dropdown-divider"></div>
+            <a href="{{ url_furniture }}" class="dropdown-item"><i class="text-brown icon-chair"></i> Мебель</a>
+        {% endif %}
+        {% if url_inventory %}
+            <a href="{{ url_inventory }}" class="dropdown-item"><i class="text-indigo icon-pencil-ruler"></i> Учебный инвентарь</a>
+        {% endif %}
+        {% if url_sport_inventory %}
+            <a href="{{ url_sport_inventory }}" class="dropdown-item"><i class="text-danger icon-dribbble"></i> Спортивный инвентарь</a>
+        {% endif %}
+    </div>
+</div>

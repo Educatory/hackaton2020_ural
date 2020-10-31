@@ -1,0 +1,49 @@
+{% load widget_tweaks %}
+
+<!-- {{ field.label }}-->
+
+{% if not disable_row %}
+    <div class="row">
+{% endif %}
+<div class="{% if class %}{{ class }}{% else %}col-md-12{% endif %}">
+    {% if field.label %}<label class="{% if field.field.required or required %}text-semibold{% endif %}
+         {% if field.errors %}text-danger{% endif %} cursor-pointer" for="{{ field.auto_id }}">
+        {% if its_new_field %}
+            <span class="label label-primary">Новое</span>
+        {% endif %}
+        {% if help_icon %}
+            <button type="button" class="btn btn-light" data-popup="popover"
+                    data-trigger="hover" data-content="{{ field.help_text }}">
+                <i class="icon-help"></i></button>
+        {% endif %}
+        {{ field.label}}
+        {% if field.field.required or required %}<span class="text-danger">*</span>{% endif %}
+    </label>{% endif %}
+    <div class="form-group">
+        {% if addon %} <div class="input-group">{% endif %}
+
+        {% if type %}
+            {% render_field field class+="form-control" type=type data-kw=kw  %}
+        {% elif redactor_full %}
+            {% render_field field class+="form-control redactor-full" data-kw=kw %}
+        {% else %}
+            {% render_field field class+="form-control" data-kw=kw %}
+        {% endif %}
+        {% if addon %} <span class="input-group-addon">{{ addon_text }}</span></div>{% endif %}
+
+        {% if field.errors and not addon %}
+            <div class="form-control-feedback text-danger">
+                <i class="icon-cancel-circle2"></i>
+            </div>
+        {% endif %}
+        <span class="help-block">
+            {% for error in field.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {% if not help_icon %}{{ field.help_text }}{% endif %}
+        </span>
+    </div>
+</div>
+{% if not disable_row %}
+    </div>
+{% endif %}

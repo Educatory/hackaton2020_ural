@@ -1,51 +1,190 @@
-{% load static %}
-<!DOCTYPE html>
+<!DOCTYPE html>{% load static compress support django_bootstrap_breadcrumbs %}
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Главная</title>
-    <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-          rel="stylesheet">
-    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/plugins/font-awesome/css/all.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/plugins/font-awesome/all.min.css' %}">
-    <link href="{% static 'assets/css/panel.css' %}" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}{{ page_title|striptags }} - {% endblock %} "{{ request.site.name }}"</title>
+  {% include 'mainpage/layouts/_favicon.html' %}
+  {#  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">#}
+  {% compress css %}
+    <link href="{% static 'assets/css/icons/fontawesome/styles.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/icons/icomoon/styles.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/bootstrap_limitless.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/layout.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static "limit2/assets/css/extras/bootstrap-table.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/components.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/colors.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static "redactor/redactor_static.css" %}" rel="stylesheet">
+    <link href="{% static "limit2/assets/css/extras/animate.min.css" %}" rel="stylesheet">
+    <link href="{% static "limit2/assets/css/noty/noty.css" %}" rel="stylesheet">
+    <link href="{% static "limit2/assets/css/noty/themes/light.css" %}" rel="stylesheet">
+    <link href="{% static "limit2/assets/css/tempusdominus-bootstrap-4.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet" type="text/css">
+{#    <link href="{% static 'assets/js/plugins/tables/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet"#}
+{#          type="text/css">#}
+    {% block extra_css %}{% endblock extra_css %}
+    {#    <link href="{% static "limit/css/extras/bootstrap-table.css" %}" rel="stylesheet" type="text/css">#}
+  {% endcompress %}
+  {% compress js %}
+    <script src="{% static 'assets/js/main/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery.redirect.js' %}"></script>
+    <script src="{% static 'assets/js/main/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/loaders/blockui.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/visualization/d3/d3.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/visualization/d3/d3_tooltip.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/styling/switchery.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/selects/bootstrap_multiselect.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/ui/moment/moment.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/ui/moment/moment_locales.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/ui/moment/locale/ru.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/datepicker/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/datepicker/moment-with-locales.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/ui/sticky.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/styling/uniform.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/uploaders/dropzone.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/uploaders/fileinput/fileinput.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/uploaders/fileinput/fileinput_ru.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/media/fancybox.min.js' %}"></script>
+    <script src="{% static 'assets/js/lib/jquery.form.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/notifications/noty.min.js' %}"></script>
+    <script src="{% static "limit2/assets/js/plugins/sortable/jquery-sortable.js" %}"></script>
+    <script src="{% static "redactor/redactor_static.js" %}"></script>
+    <script src="{% static "redactor/plugins/table.js" %}"></script>
+    <script src="{% static "redactor/plugins/fontsize.js" %}"></script>
+    <script src="{% static "redactor/plugins/imagemanager.js" %}"></script>
+    <script src="{% static "redactor/plugins/video.js" %}"></script>
+    <script src="{% static "redactor/plugins/filemanager.js" %}"></script>
+    <script src="{% static "redactor/plugins/alignment.js" %}"></script>
+    <script src="{% static "redactor/plugins/fullscreen.js" %}"></script>
+    <script src="{% static "redactor/plugins/fontcolor.js" %}"></script>
+    <script src="{% static "redactor/plugins/source.js" %}"></script>
+    <script src="{% static "redactor/langs/ru_static.js" %}"></script>
+    <script src="{% static "assets/js/lib/jquery.cookie.js" %}"></script>
+    <script src="{% static "assets/js/plugins/tables/datatables/datatables.min.js" %}"></script>
+    <script src="{% static 'assets/js/plugins/tables/datatables/extensions/buttons.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/tables/datatables/extensions/row_reorder.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/tables/datatables/extensions/responsive.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/tables/datatables/extensions/fixed_header.min.js' %}"></script>
+    <script src="{% static "limit2/assets/js/plugins/tables/datatables/extensions/select.min.js" %}"></script>
+    <script src="{% static 'assets/js/plugins/tables/bootstrap-table/bootstrap-table.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/tables/bootstrap-table/bootstrap-table-ru-RU.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/selects/select2.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/tags/tagsinput.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/styling/switchery.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/selects/bootstrap_multiselect.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/forms/styling/switch.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/media/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/lc-lightbox/js/lc_lightbox.lite.min.js' %}"></script>
+    <script src="{% static 'vendor/js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/js/init/defaults_bootstrap_table.js' %}"></script>
+    <script src="{% static "assets/js/init/datatables.js" %}"></script>
+    <script src="{% static 'assets/js/app.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'pages/navbar_multiple_sticky.js' %}"></script>
+
+  {% endcompress %}
+  {% block extra_js %}{% endblock %}
 </head>
-<body {% block app-profile %}class=""{% endblock %}>
-{% block body %}
-    <div class='loader'>
-        <div class='spinner-grow text-primary' role='status'>
-            <span class='sr-only'>Loading...</span>
+
+<body class="">
+<!-- Main navbar -->
+{% include 'limit_admin2/layouts/_main_navbar.html' %}
+<!-- /main navbar -->
+
+<!-- Alternative navbar -->
+{% include 'limit_admin2/layouts/_alternative_navbar.html' %}
+<!-- /alternative navbar -->
+
+
+<!-- Page content -->
+<div class="page-content">
+  {% include 'limit_admin2/layouts/_main_sidebar.html' %}
+
+  <div class="content-wrapper">
+
+    {% block page-header %}
+      <div class="page-header page-header-light" style="border-left: 1px solid #ddd; border-right: 1px solid #ddd;">
+        <div class="page-header-content border-bottom-1 border-bottom-indigo-400">
+          <div class="page-title">
+            <h6>
+              {% block page-name %}{{ page_title|safe }}{% endblock %}
+            </h6>
+          </div>
         </div>
-    </div>
-    <div class="connect-container align-content-stretch d-flex flex-wrap">
-        {% block container %}{% endblock %}
-    </div>
-{% endblock %}
+        {% block breadcrumb %}
+          {% comment %} Два блока breadcrumb и breadcrumbs, чтобы можно было скрывать крошки на странице {% endcomment %}
+          <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+            <div class="d-flex">
+              <div class="breadcrumb">
+                <a href="{% url 'admin:dashboard:main' %}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> </a>
+                {% block breadcrumbs %}{% render_breadcrumbs 'limit_admin2/partials/breadcrumbs.html' %}{% endblock %}
+              </div>
+              {% block breadcrumbs-action %}
+                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+              {% endblock %}
 
+            </div>
+            {% block breadcrumbs-action-elements %}{% endblock %}
+          </div>
+        {% endblock breadcrumb %}
+      </div>
+    {% endblock page-header %}
 
-{% block js %}
-    <!-- Javascripts -->
-    <script src="{% static 'assets/plugins/jquery/jquery-3.4.1.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/bootstrap/popper.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/apexcharts/dist/apexcharts.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/blockui/jquery.blockUI.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/jquery.flot.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/jquery.flot.time.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/jquery.flot.symbol.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/jquery.flot.resize.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/flot/jquery.flot.tooltip.min.js' %}"></script>
-    <script src="{% static 'assets/js/connect.min.js' %}"></script>
-    <script src="{% static 'assets/plugins/chartjs/chart.min.js' %}"></script>
-    <script src="{% static 'assets/js/pages/dashboard.js' %}"></script>
-{% endblock %}
-{% block extra_js %}{% endblock %}
+    <div class="content">
+      {% block content %}{% endblock content %}
+      <div id="modals_wrapper">
+        {% block modal_wrapper %}{% endblock %}
+      </div>
+    </div>
+
+    {% block footer %}
+      <div class="navbar navbar-expand-lg navbar-light">
+        <div class="text-center d-lg-none w-100">
+          <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse"
+                  data-target="#navbar-footer">
+            <i class="icon-unfold mr-2"></i>
+
+          </button>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar-footer">
+					<span class="navbar-text">
+    <a href="https://siteedu.ru" target="_blank">SiteEdu.ru</a> - сервис для образовательных организаций.
+    &copy; 2012-{% now 'Y' %}. ООО "<a href="https://учисьучись.рф">Учись учись</a>"
+					</span>
+
+          <ul class="navbar-nav ml-lg-auto">
+            {#            <li class="nav-item"><a href="{% url 'admin:cabinet:support:list' %}" class="navbar-nav-link"><i#}
+            {#                    class="icon-lifebuoy mr-2"></i> Техподдержка сайта</a></li>#}
+            <li class="nav-item"><a href="{% url 'admin:instructions:list' %}" class="navbar-nav-link"
+                                    target="_blank"><i class="icon-file-text2 mr-2"></i> Инструкции</a></li>
+          </ul>
+        </div>
+      </div>
+    {% endblock footer %}
+  </div>
+  <!-- Right sidebar -->
+  {% include 'limit_admin2/layouts/_sidebar_right.html' %}
+  <!-- /right sidebar -->
+
+</div>
+<!-- /page content -->
+<!--Модальное окно вызова инструкции-->
+<div class="modal fade" id="get-help-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content solid">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END Модальное окно вызова инструкции-->
+<!--Модальные окна Supports-->
+{% include 'limit_admin2/partials/call_form.html' %}
+{% support_add_form %}
+<!--END Модальные окна Supports-->
 </body>
 </html>

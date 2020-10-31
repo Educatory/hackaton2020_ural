@@ -1,0 +1,43 @@
+{% load widget_tweaks url_split %}
+
+{% comment %}
+    dom - ID селекта, куда нужно встатавить(изменить) выбранное значение из Менеджера изображений
+    ids - ID элемента(ов), которые уже выбраные, обычно при редактировании.
+{% endcomment %}
+
+
+<div class="{% if class %}{{ class }}{% else %}form-group {% if not disable_row %}row{% endif %}{% endif %}">
+  <label class="{% if not disable_row %}col-lg-3 col-form-label{% endif %} {% if required %}text-semibold{% endif %}">
+    {{ label_title }}
+    {% if required %}<span class="text-danger">*</span>{% endif %}
+  </label>
+  <div class="{% if not disable_row %}col-lg-9{% endif %}">
+    <button id="get_file_manager" type="button" class="btn btn-info btn-labeled btn-labeled-left btn-xs" data-dom="{{ dom }}"
+            data-ids="{{ ids }}">
+      <b><i class="icon-folder5"></i></b> {{ btn_title }}
+    </button>
+    <button id="unselect" type="button" class="btn btn-warning btn-xs btn-labeled btn-labeled-left" data-dom="{{ dom }}">
+      <b><i class="icon-x"></i></b> Очистить
+    </button>
+
+        {% if form.new_image.errors %}
+          <span class="help-block">
+                            {% for error in form.new_image.errors %}
+                              <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+            {{ form.new_image.help_text }}
+                        </span>
+        {% endif %}
+
+      {% if form.new_image.value %}
+        {% for id, name in form.new_image.field.choices %}
+          {% if form.new_image.value == id %}
+            <img id="{{ form.new_image.auto_id }}_preview" class="col-sm-3" src="{{ name }}">
+          {% endif %}
+        {% endfor %}
+      {% else %}
+{#        <span class="text-center">Нужно выбрать изображение</span>#}
+        <img id="{{ form.new_image.auto_id }}_preview" style="display: none" class="col-sm-3" src="//:0">
+      {% endif %}
+  </div>
+</div>

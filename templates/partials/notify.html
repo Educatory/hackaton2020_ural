@@ -1,0 +1,29 @@
+{% load support %}{% support_unread_count request.site as unread_count %}
+<li class="nav-item dropdown" title="Сообщения техподдержки">
+  <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+    <i class="icon-bubble-notification"></i>
+{#    <span class="visible-xs-inline-block position-right">Сообщения техподдержки</span>#}
+    <span class="badge {% if unread_count > 0 %}bg-warning-400{% else %}bg-success{% endif %}">{{ unread_count }}</span>
+  </a>
+  <div class="dropdown-menu dropdown-content width-350">
+    <div class="dropdown-content-heading">
+      <i class="icon-bell2"> </i> Сообщения техподдержки
+    </div>
+    {% if unread_count > 0 %}
+      <ul class="media-list dropdown-content-body" style="padding: 0">
+        {% support_unread_list request.site as notifications %}
+        {% for notify in notifications %}
+          {% for message in notify.unread_message %}
+            {% if message.unread %}
+              {% include 'limit_admin/partials/notify_list_top_info.html' %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="dropdown-content-footer">
+      <a href="{% url 'admin:cabinet:support:list' %}" data-popup="tooltip" title="Все уведомления"><i
+              class="icon-menu display-block"></i></a>
+    </div>
+  </div>
+</li>

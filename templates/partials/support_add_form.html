@@ -1,0 +1,31 @@
+<div class="modal fade" id="add-support-form">
+    <div class="modal-dialog">
+        <div class="modal-content solid">
+            <div class="modal-header bg-info">
+                <h6 class="modal-title">Создание заявки в службу технической поддержки</h6>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form  id="{{ form.get_id }}"
+
+                      action="{% url 'admin:cabinet:support:add' %}"
+                      method="POST"
+                      enctype="{{ form.get_enctype }}">
+
+                    {% csrf_token %}
+                    {% include "limit_admin2/form/horizontal/ff.html" with field=form.support_theme  %}
+                    {% include "limit_admin2/form/ff.html" with field=form.support_text %}
+                    {% include "limit_admin2/form/fileupload.html" with field=form.support_file type="file" input_class='support-file-input' %}
+
+                    <div class="text-left mb-2 mt-2"><span class="help-block"><span class="text-danger">*</span> - поля, обязательные для заполнения.</span></div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn bg-teal-400 btn-xlg btn-labeled btn-labeled-left">
+                            <b><i class="icon-checkmark3 position-left"></i></b> Отправить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

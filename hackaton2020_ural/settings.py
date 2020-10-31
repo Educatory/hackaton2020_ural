@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'compressor',
     'django_bootstrap_breadcrumbs',
     'sorl.thumbnail',
-    'widget_tweaks'
+    'widget_tweaks',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

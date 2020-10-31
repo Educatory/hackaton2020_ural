@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-8">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header bg-teal-400 text-center">
                     <h6 class="card-title">Интерактивная карта региона</h6>
@@ -17,7 +17,39 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title">Индекс критереев</h5>
+                </div>
+
+                <div class="card-body">
+                    <p class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" name="stacked-multiple" class="stacked-multiple" value="multiples" checked data-fouc>
+                            Отделить
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" name="stacked-multiple" class="stacked-multiple" value="stacked" data-fouc>
+                            Совмещенно
+                        </label>
+                    </div>
+                    </p>
+
+                    <div class="chart-container">
+                        <div class="chart" id="d3-bar-stacked-multiples"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
             <div class="card">
                 <div class="card-header bg-teal-400 text-white header-elements-inline">
                     <h6 class="card-title">Перечень городов</h6>

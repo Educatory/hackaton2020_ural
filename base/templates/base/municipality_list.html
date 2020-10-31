@@ -4,14 +4,28 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-teal-400 text-center">
-                    <h6 class="card-title">Интерактивная карта региона</h6>
+        {% for item in items %}
+            <div class="col-sm-3 col-6">
+                <div class="card">
+                    <a href="{% url "municipality:detail" item.pk %}" class="text-center mt-3">
+                        <img class="card-img-top w-25 h-25" src="{{ item.city.icon.url }}" alt="">
+                    </a>
+
+                    <div class="card-body">
+                        <h3 class="card-title">{{ item }}</h3>
+                        <p class="card-text">
+                            {{ item.description|safe }}
+                        </p>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between">
+                        <span>Индекс </span>
+                        <span class="pl-2 text-muted">Обновлено 3 часа назад</span>
+                        <span class="badge bg-success ml-auto">{{ item.get_index }}</span>
+                    </div>
                 </div>
-                <div class="card-body text-center"></div>
             </div>
-        </div>
+        {% endfor %}
     </div>
 
 {% endblock %}

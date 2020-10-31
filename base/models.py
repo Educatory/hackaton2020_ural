@@ -18,8 +18,9 @@ class BasicIndicators(models.Model):
 
 class Criteria(models.Model):
     name = models.CharField("Критерии", max_length=500)
-    indicators = models.ManyToManyField(BasicIndicators, verbose_name='Базоваые показетели',
-                                        blank=True, null=True)
+    indicators = models.ManyToManyField(BasicIndicators,
+                                        verbose_name='Базоваые показетели',
+                                        blank=True)
     formula = models.CharField("Алгоритм расчета показетля", max_length=200, blank=True, null=True)
 
     class Meta:
@@ -34,9 +35,10 @@ class Criteria(models.Model):
 class Municipality(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     criteria = models.ManyToManyField(Criteria)
+    order = models.IntegerField('Порядок', default=1)
 
     class Meta:
-        ordering = ['city']
+        ordering = ['order', 'city']
         verbose_name = 'Мниципальный район'
         verbose_name_plural = 'Муниципальные районы'
 

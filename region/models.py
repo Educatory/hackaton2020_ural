@@ -35,6 +35,7 @@ class City(Location):
     """Города"""
     region = models.ForeignKey(Region, verbose_name=u"Район", on_delete=models.CASCADE)
     icon = models.ImageField("Logo", blank=True, null=True)
+    description = models.TextField('Описание', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Город'

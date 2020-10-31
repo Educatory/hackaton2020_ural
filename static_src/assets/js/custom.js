@@ -2,11 +2,7 @@ $(function () {
 
   // Выставляет активными родительские пункты меню относительно активного таба
   const active_ident = $('#nav_active').text();
-  // $('.sidebar-main')
-  //     .find("[data-active='" + active_ident + "']")
-  //     .addClass('active')
-  //     .parents()
-  //     .addClass('active');
+
   const sidebar = $('.sidebar-main').find("[data-active='" + active_ident + "']");
   sidebar.addClass('active');
   if (sidebar.closest('div.sidebar-user-material').length > 0) {
@@ -46,25 +42,6 @@ $(function () {
   } else {
     $('body').addClass($.cookie('sidebar-right'));
   }
-  // Изменяем состояние правого сайдбара из куков и запись в них
-  $('a.sidebar-control.sidebar-right-toggle').on('click', function () {
-    if ($('body').hasClass('sidebar-right-visible')) {
-      $.cookie('sidebar-right', '', {expires: 180, path: '/manage/'});
-    } else {
-      $.cookie('sidebar-right', 'sidebar-right-visible', {expires: 180, path: '/manage/'});
-    }
-  });
-
-  // Получение состояния дива об информации отключения сайта
-  if (typeof $.cookie('site-end-info') == 'undefined') {
-    $.cookie('site-end-info', 'block', {expires: 180, path: '/manage/'})
-  }
-
-  $('#site-end-info')
-    .css('display', $.cookie('site-end-info'))
-    .on('close.bs.alert', function () {
-      $.cookie('site-end-info', 'none', {expires: 10, path: '/manage/'})
-    });
 
 });
 
@@ -113,142 +90,7 @@ $.getUrlVar = function (key) {
 
 
 $(document).ready(function () {
-  $("#get-call-user").ajaxForm({
-    beforeSubmit: disableButton,
-    cache: false,
-    type: 'post',
-    success: function (data) {
-      $.unblockUI();
-      if (data.status) {
-        $('#get-call-user').modal('toggle');
-        swal({
-          title: "Заявка на обратный звонок принята",
-          text: "В рабочее время с 7.00 до 16.00 (по МСК) с вами свяжутся наши специалисты",
-          type: "success",
-        });
-      }
 
-    }
-  });
-
-  const redactor = $('*[data-kw="redactor"]');
-
-  $('*[data-kw="redactor"]').redactor({
-    source: false,
-    lang: 'ru',
-    focus: false,
-    // toolbarFixedTarget: true,
-    toolbarFixedTopOffset: 40,
-    buttons: ['bold', 'italic', 'underline', 'deleted', 'lists', 'image', 'file', 'link', 'horizontalrule'],
-    plugins: ['fontsize', 'alignment', 'fontcolor', 'table', 'fullscreen']
-  });
-
-  $('[data-kw="redactor-sm"]').redactor({
-    source: false,
-    structure: true,
-    lang: 'ru',
-    focus: false,
-    imageResizable: true,
-    imagePosition: true,
-    imageTag: 'figure',
-    dragImageUpload: false,
-    clipboardImageUpload: false,
-    toolbarFixedTarget: false,
-    imageUploadParam: 'upload',
-    formatting: ['p', 'blockquote', 'h2', 'h3', 'h4', 'h5', 'h6'],
-    buttons: ['format', 'bold', 'italic', 'underline', 'lists'],
-    plugins: [],
-    imageUpload: '/manage/file_manager/images/add/?r-image-manager=True',
-    imageManagerJson: '/manage/file_manager/images/json/?r-image-manager=True',
-    fileUpload: '/manage/file_manager/files/add/?r-image-manager=True',
-    fileManagerJson: '/manage/file_manager/files/json/?r-image-manager=True',
-    fileUploadForms: '#redactor-download-form',
-  });
-
-  $('[data-kw="redactor-full"]').redactor({
-    source: false,
-    structure: true,
-    lang: 'ru',
-    focus: false,
-    imageResizable: true,
-    imagePosition: true,
-    imageTag: 'figure',
-    dragImageUpload: true,
-    clipboardImageUpload: true,
-    toolbarFixedTarget: false,
-    imageUploadParam: 'upload',
-    formatting: ['p', 'blockquote', 'h2', 'h3', 'h4', 'h5', 'h6'],
-    buttons: ['format', 'bold', 'italic', 'underline', 'deleted', 'lists', 'image', 'file', 'link', 'horizontalrule'],
-    plugins: ['fontsize', 'alignment', 'imagemanager', 'table', 'video', 'filemanager', 'fontcolor', 'fullscreen'],
-    imageUpload: '/manage/file_manager/images/add/?r-image-manager=True',
-    imageManagerJson: '/manage/file_manager/images/json/?r-image-manager=True',
-    fileUpload: '/manage/file_manager/files/add/?r-image-manager=True',
-    fileManagerJson: '/manage/file_manager/files/json/?r-image-manager=True',
-    fileUploadForms: '#redactor-download-form',
-  });
-
-  $('[data-kw="redactor-full-html"]').redactor({
-    source: false,
-    structure: true,
-    lang: 'ru',
-    focus: false,
-    imageResizable: true,
-    imagePosition: true,
-    imageTag: 'figure',
-    dragImageUpload: true,
-    clipboardImageUpload: true,
-    toolbarFixedTarget: false,
-    imageUploadParam: 'upload',
-    formatting: ['p', 'blockquote', 'h2', 'h3', 'h4', 'h5', 'h6'],
-    buttons: ['format', 'bold', 'italic', 'underline', 'deleted', 'lists', 'image', 'file', 'link', 'horizontalrule'],
-    plugins: ['source', 'fontsize', 'alignment', 'imagemanager', 'table', 'video', 'filemanager', 'fontcolor', 'fullscreen'],
-    imageUpload: '/manage/file_manager/images/add/?r-image-manager=True',
-    imageManagerJson: '/manage/file_manager/images/json/?r-image-manager=True',
-    fileUpload: '/manage/file_manager/files/add/?r-image-manager=True',
-    fileManagerJson: '/manage/file_manager/files/json/?r-image-manager=True',
-    fileUploadForms: '#redactor-download-form',
-  });
-
-  $("a[data-action='help']").click(function (event) {
-    event.preventDefault();
-    var _this = $(this);
-    var slug = _this.attr("data-section");
-    $.blockUI({
-      message: '<span class="text-semibold"><i class="icon-spinner4 spinner position-left"></i>&nbsp; Пожалуйста, подождите ...</span>',
-      timeout: 1500,
-      overlayCSS: {
-        backgroundColor: '#1b2024',
-        opacity: 0.8,
-        cursor: 'wait'
-      },
-      css: {
-        border: 0,
-        color: '#fff',
-        padding: 0,
-        backgroundColor: 'transparent'
-      }
-    });
-    $.ajax({
-      url: '/manage/instructions/ajax-help/',
-      type: "get",
-      data: {'slug': slug},
-      success: function (data) {
-        $('#get-help-modal').modal('show');
-        $('#get-help-modal').find('.modal-content').html(data.help_snippet);
-        $('#get-help-modal img').each(function () {
-          $(this).wrap($('<a/>', {
-            href: $(this).attr('src'),
-            class: "fancybox",
-            rel: "artikel"
-          }));
-        });
-        $('#get-help-modal a.fancybox').fancybox();
-      },
-      error: function (err) {
-        console.log('error', err);
-      }
-    })
-  });
 
   $('select.select2-default').select2();
 

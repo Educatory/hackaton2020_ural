@@ -92,20 +92,6 @@
           </div>
         </div>
         {% block breadcrumb %}
-{#          {% comment %} Два блока breadcrumb и breadcrumbs, чтобы можно было скрывать крошки на странице {% endcomment %}#}
-{#          <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">#}
-{#            <div class="d-flex">#}
-{#              <div class="breadcrumb">#}
-{#                <a href="{% url 'dashboard:dashboard' %}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> </a>#}
-{#                {% block breadcrumbs %}{% render_breadcrumbs 'partials/breadcrumbs.html' %}{% endblock %}#}
-{#              </div>#}
-{#              {% block breadcrumbs-action %}#}
-{#                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>#}
-{#              {% endblock %}#}
-{##}
-{#            </div>#}
-{#            {% block breadcrumbs-action-elements %}{% endblock %}#}
-{#          </div>#}
         {% endblock breadcrumb %}
       </div>
     {% endblock page-header %}
@@ -129,12 +115,12 @@
 
         <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-    <a href="https://.ru" target="_blank">СитиРанж.ru</a> - информационно-аналитический сервис.
-    &copy; 2012-{% now 'Y' %}. "<a href="">Educatory</a>"
+    <a href="https://.ru" target="_blank">#CityVision</a> - информационно-аналитический сервис.
+    &copy; 2020-{% now 'Y' %}. "<a href="">Team Educatory</a>"
 					</span>
 
           <ul class="navbar-nav ml-lg-auto">
-            <li class="nav-item"><a href="#" class="navbar-nav-link"
+            <li class="nav-item"><a href="#" class="navbar-nav-link disabled"
                                     target="_blank"><i class="icon-file-text2 mr-2"></i> Инструкции</a></li>
           </ul>
         </div>

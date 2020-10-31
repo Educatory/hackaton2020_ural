@@ -3,6 +3,7 @@
 {% load static cookie %}
 
 {% block content %}
+    {% include "form/messages.html" %}
     <div class="row mt-2 mb-3">
         <div class="col-2 px-0">
             <a class="btn btn-primary bg-primary w-100" href="{% url 'municipality:add' %}">

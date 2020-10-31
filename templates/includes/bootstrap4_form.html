@@ -1,0 +1,23 @@
+{% csrf_token %}
+
+{% load widget_tweaks %}
+
+{% for hidden_field in form.hidden_fields %}
+    {{ hidden_field }}
+{% endfor %}
+
+{% if form.non_field_errors %}
+    <div class="alert alert-danger text-center" role="alert">
+        {% for error in form.non_field_errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% for field in form.visible_fields %}
+    {% if field.field.widget.input_type == 'checkbox' %}
+        {% include "includes/bootstrap4_form_checkbox.html" with field=field %}
+    {% else %}
+        {% include "includes/bootstrap4_form_field.html" with field=field %}
+    {% endif %}
+{% endfor %}

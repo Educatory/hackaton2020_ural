@@ -1,0 +1,29 @@
+
+{% load widget_tweaks %}
+
+<div class="form-group">
+
+    {{ field.label_tag }}
+
+    {% if field.help_text %}
+        <span class="help_text-popover float-right" data-content="{{ field.help_text }}">
+            <i class="fas fa-fw fa-question-circle"></i>
+        </span>
+    {% endif %}
+
+    {% if form.is_bound %}
+        {% if field.errors %}
+            {% render_field field class="form-control is-invalid" %}
+            {% for error in field.errors %}
+                <div class="invalid-feedback">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% else %}
+            {% render_field field class="form-control is-valid" %}
+        {% endif %}
+    {% else %}
+        {% render_field field class="form-control" %}
+    {% endif %}
+</div>
+

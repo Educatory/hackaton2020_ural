@@ -1,0 +1,16 @@
+{% load widget_tweaks %}
+
+<div class="form-group text-white">
+    <div class="custom-control custom-checkbox {% if form.is_bound and field.errors %}is-invalid{% endif %}">
+        <input type="checkbox" class="custom-control-input" id="{{ field.auto_id }}" name="{{ field.name }}">
+        <label class="custom-control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="invalid-feedback">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+

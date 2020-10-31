@@ -1,4 +1,7 @@
-{% load static thumbnail %}
+{% load static thumbnail cookie %}
+
+{% cookie "role" as role %}
+
 <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
     <div id="nav_active" hidden>{{ section }}</div>
 
@@ -21,12 +24,12 @@
                 <li class="nav-item">
                     <div class="form-group px-2">
                         <label>Пример роли пользователя</label>
-                        <form id="role_selector_form" action="{% url "dashboard:change_role" %}" method="post">
+                        <form action="." method="post">
                             {% csrf_token %}
-                            <select id="role_selector" class="form-control select select2-default" name="dashboard-role" data-fouc>
-                                <option value="ADMIN">Администратор</option>
-                                <option value="AR">Операционист</option>
-                                <option value="KS">Руководитель</option>
+                            <select id="role_selector" class="form-control select select2-default" data-fouc>
+                                <option value="ADMIN" {% if role == "ADMIN" %}selected{% endif %}>Администратор</option>
+                                <option value="OPERATOR" {% if role == "OPERATOR" %}selected{% endif %}>Операционист</option>
+                                <option value="DIRECTOR" {% if role == "DIRECTOR" %}selected{% endif %}>Руководитель</option>
                             </select>
                         </form>
                     </div>
@@ -60,19 +63,26 @@
 						</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="icon-users"></i><span>Пользователи</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="icon-stats-bars4"></i>
-                        <span>
+                {% if role != 'OPERATOR' %}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon-users"></i><span>Пользователи</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if role != 'OPERATOR' %}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon-stats-bars4"></i>
+                            <span>
                             Отчеты
 						</span>
-                    </a>
-                </li>
+                        </a>
+                    </li>
+                {% endif %}
+
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="icon-pulse2"></i>
@@ -81,30 +91,33 @@
 						</span>
                     </a>
                 </li>
-                <li class="nav-item-header">
-                    <div class="text-uppercase font-size-xs line-height-xs">
-                        Справочники
-                    </div>
-                </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">
-                        <i class="icon-calendar2"></i>
-                        <span>Периоды</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">
-                        <i class="icon-home7"></i>
-                        <span>Населенные пункты</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">
-                        <i class="icon-collaboration"></i>
-                        <span>Роли и права пользователей</span>
-                    </a>
-                </li>
+                {% if role == "ADMIN" %}
+                    <li class="nav-item-header">
+                        <div class="text-uppercase font-size-xs line-height-xs">
+                            Справочники
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled">
+                            <i class="icon-calendar2"></i>
+                            <span>Периоды</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled">
+                            <i class="icon-home7"></i>
+                            <span>Населенные пункты</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled">
+                            <i class="icon-collaboration"></i>
+                            <span>Роли и права пользователей</span>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

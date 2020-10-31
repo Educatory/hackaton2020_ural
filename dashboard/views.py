@@ -15,13 +15,3 @@ class DashboardView(TemplateView, ContextProcessor):
     def crumbs(self):
         return []
 
-
-class DashboardChangeRole(FormView):
-
-    def post(self, request, *args, **kwargs):
-        dashboard_role = request.POST.get('dashboard-role', False)
-        context = dict
-        context.update({
-            'role': dashboard_role
-        })
-        return None

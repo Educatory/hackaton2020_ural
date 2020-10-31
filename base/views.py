@@ -1,10 +1,9 @@
 from django.contrib import messages
-from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
+from base.forms import MunicipalityAdminForm, CriteriaAdminForm
 from base.models import Municipality, Criteria
-from base.forms import MunicipalityAdminForm
 from core.views import ContextProcessor
 
 
@@ -49,3 +48,43 @@ class MunicipalityAdd(CreateView):
     def get_success_url(self):
         messages.add_message(self.request, 25, u'Район успешно создан.')
         return u'%s' % reverse('municipality:list')
+
+
+class CriteriaAdd(CreateView):
+    """New Criteria"""
+
+    model = Criteria
+    template_name = 'base/citeria_add.html'
+    form_class = CriteriaAdminForm
+    page_title = u'Добавить'
+
+    def get_form_kwargs(self):
+        kwargs = super(CriteriaAdd, self).get_form_kwargs()
+        kwargs.update({
+            'form_title': self.page_title
+        })
+        return kwargs
+
+    def get_success_url(self):
+        messages.add_message(self.request, 25, u'Критерии успешно создан.')
+        return u'%s' % reverse('municipality:criteria_list')
+
+
+class CriteriaEdit(UpdateView):
+    """Edit Criteria"""
+
+    model = Criteria
+    template_name = 'base/citeria_add.html'
+    form_class = CriteriaAdminForm
+    page_title = u'Изменить'
+
+    def get_form_kwargs(self):
+        kwargs = super(CriteriaEdit, self).get_form_kwargs()
+        kwargs.update({
+            'form_title': self.page_title
+        })
+        return kwargs
+
+    def get_success_url(self):
+        messages.add_message(self.request, 25, u'Индекс успешно отредактирован.')
+        return u'%s' % reverse('municipality:criteria_list')

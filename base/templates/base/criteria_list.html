@@ -1,17 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="card">
-        <div class="card-header">
-            <h6 class="card-title">
-                <a class="text-default collapsed" data-toggle="collapse" href="#collapsible-control-right-group2" aria-expanded="false">Collapsible Item #2</a>
-            </h6>
-        </div>
-
-        <div id="collapsible-control-right-group2" class="collapse" style="">
-            <div class="card-body">
-                Тon cupidatat skateboard dolor brunch. Тesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda.
-            </div>
+    {% include "form/messages.html" %}
+    <div class="row mt-2 mb-3">
+        <div class="col-2 px-0">
+            <a class="btn btn-primary bg-primary w-100" href="{% url 'municipality:criteria_add' %}">
+                <i class="icon-plus2"></i>
+                Добавить Критерии/Индикатор (единица измерения)
+            </a>
         </div>
     </div>
+    <div class="criteries">
+        {% for foo in object_list %}
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="card-title">
+                        <a class="text-default collapsed" data-toggle="collapse"
+                           href="#criteries-{{ foo.pk }}" aria-expanded="false">{{ foo }}</a>
+                    </h6>
+                </div>
+
+                <div id="criteries-{{ foo.pk }}" class="collapse" style="">
+                    <div class="card-body">
+                        <p><span>Описание:</span>{{ foo.description }}</p>
+                        <span>Подключение к АПИ</span>{{ foo.api }}
+
+                    </div>
+                    <a class="btn btn-primary" href="{% url 'municipality:criteria_edit' foo.pk %}">Редактировать</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

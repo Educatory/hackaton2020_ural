@@ -22,11 +22,14 @@ class Criteria(models.Model):
                                         verbose_name='Базоваые показетели',
                                         blank=True)
     formula = models.CharField("Алгоритм расчета показетля", max_length=200, blank=True, null=True)
+    description = models.TextField('Описание', null=True, blank=True)
+    api = models.CharField("API URI", max_length=250, blank=True, null=True,
+                           help_text="Настройки подключения к АПИ из открытых источнико")
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Критерии'
-        verbose_name_plural = "Критерии"
+        verbose_name = 'Критерии/Индикатор (единица измерения)'
+        verbose_name_plural = "Критерии/Индикатор (единица измерения)"
 
     def __str__(self):
         return self.name

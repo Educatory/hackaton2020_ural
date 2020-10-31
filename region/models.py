@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 
 class VisibleManager(models.Manager):
@@ -34,7 +35,18 @@ class City(Location):
     """Города"""
     # gerb_img = models.ImageField()
     region = models.ForeignKey(Region, verbose_name=u"Район", on_delete=models.CASCADE)
+    icon = models.ImageField("Logo", blank=True, null=True)
 
     class Meta:
         verbose_name = 'Город'
         verbose_name_plural = 'Города'
+
+    def __str__(self):
+        return self.name
+
+    def icon_thumb(self):
+        if self.icon:
+            return mark_safe('<img width="100" src={}/>'.format(self.icon.url))
+        else:
+            return '-'
+

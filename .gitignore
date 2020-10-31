@@ -5,3 +5,4 @@ touchme
 /logs/
 
  db.sqlite3
+ media/*

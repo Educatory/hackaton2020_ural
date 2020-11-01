@@ -39,6 +39,7 @@ class Municipality(models.Model):
     city = models.ForeignKey(City, verbose_name='Муниципальный район',  on_delete=models.CASCADE)
     criteria = models.ManyToManyField(Criteria, verbose_name='Критерии')
     order = models.IntegerField('Порядок', default=1)
+    index = models.PositiveSmallIntegerField("Index", default=0)
 
     class Meta:
         ordering = ['order', 'city']
@@ -50,7 +51,7 @@ class Municipality(models.Model):
 
     def get_index(self):
         """Вычисление среднего индекса относительно критереев"""
-        return 5.7
+        return self.index
 
     @classmethod
     def get_general_index(cls):

@@ -30,14 +30,16 @@
                     <p class="mb-3">
                     <div class="form-check form-check-inline">
                         <label class="form-check-label">
-                            <input type="radio" name="stacked-multiple" class="stacked-multiple" value="multiples" checked data-fouc>
+                            <input type="radio" name="stacked-multiple" class="stacked-multiple" value="multiples"
+                                   checked data-fouc>
                             Отделить
                         </label>
                     </div>
 
                     <div class="form-check form-check-inline">
                         <label class="form-check-label">
-                            <input type="radio" name="stacked-multiple" class="stacked-multiple" value="stacked" data-fouc>
+                            <input type="radio" name="stacked-multiple" class="stacked-multiple" value="stacked"
+                                   data-fouc>
                             Совмещенно
                         </label>
                     </div>
@@ -59,12 +61,15 @@
                     <ul class="list-group list-group-flush municipality-list">
                         {% for item in municipality %}
 
-                            <a href="{% url "municipality:detail" item.pk %}" class="list-group-item list-group-item-action">
+                            <a href="{% url "municipality:detail" item.pk %}"
+                               class="list-group-item list-group-item-action">
                             <span class="font-weight-bold">
                                 <i class="icon-city mr-2"></i>
                                 {{ item }}
                             </span>
-                                <span class="badge {% if item.get_index < 4 %}bg-info{% elif item.get_index < 7 %}bg-warning{% elif item.get_index < 5 %}bg-danger{% else %}bg-success{% endif %} ml-auto"> {{ item.get_index }}</span>
+                                <span class="badge {% if item.get_index < 3 %}
+                                bg-info
+                                {% elif item.get_index < 4 %}bg-warning{% elif item.get_index < 5 %}bg-danger{% else %}bg-success{% endif %} ml-auto"> {{ item.get_index }}</span>
                             </a>
                         {% endfor %}
 

@@ -12,3 +12,4 @@ six==1.15.0
 sorl-thumbnail==12.6.3
 sqlparse==0.4.1
 django-extensions==3.0.9
+django-jsonfield==1.4.1

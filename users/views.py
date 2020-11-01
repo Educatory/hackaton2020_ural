@@ -9,3 +9,4 @@ class CustomUsersList(ListView, ContextProcessor):
     section = 'custom_users'
     page_title = '<i class="icon-users mr-2"></i> Пользователи'
     model = CustomUser
+    context_object_name = 'items'

@@ -1,6 +1,7 @@
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from region.models import City
+import jsonfield
 
 
 class BasicIndicators(models.Model):
@@ -37,7 +38,7 @@ class Criteria(models.Model):
 
 class Municipality(models.Model):
     city = models.ForeignKey(City, verbose_name='Муниципальный район',  on_delete=models.CASCADE)
-    criteria = models.ManyToManyField(Criteria, verbose_name='Критерии')
+    criteria = models.ManyToManyField(Criteria, verbose_name='Критерии', related_name='municipality')
     order = models.IntegerField('Порядок', default=1)
 
     class Meta:
@@ -67,7 +68,7 @@ class MunicipalityCriteria(TimeStampedModel):
                                  verbose_name='Критерии',
                                  on_delete=models.CASCADE)
 
-    dataset = models.JSONField()
+    dataset = jsonfield.JSONField()
 
     class Meta:
         ordering = ['created']
@@ -75,4 +76,4 @@ class MunicipalityCriteria(TimeStampedModel):
         verbose_name_plural = 'Данные критерия'
 
     def __str__(self):
-        return ''
+        return 'Датасет от {} '.format(self.created)

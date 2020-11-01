@@ -56,21 +56,17 @@
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-12 criteries">
-            {% for crit in item.criteria.all %}
+    <div class="row criteries">
+        {% for crit in item.criteria.all %}
+            <div class="col-6">
                 <div class="card card-collapsed">
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">{{ crit }}</h5>
+                        <h5 class="card-title"><strong> Критерий #{{ crit.pk }}.</strong> {{ crit }}</h5>
                         <div class="header-elements">
                             <div class="list-icons">
                                 <a class="list-icons-item rotate-180" data-action="collapse"></a>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="card-body" style="display: none;">
-                        Полное описание критерия
                     </div>
 
                     <div class="table-responsive" style="display: none;">
@@ -107,7 +103,7 @@
                         </ul>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

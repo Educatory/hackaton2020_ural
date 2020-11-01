@@ -1,1 +1,75 @@
 {% extends "base.html" %}
+
+{% load cookie %}
+
+{% block content %}
+
+    {% cookie 'role' as role %}
+
+    <div class="row">
+        <div class="col">
+            {% if role == "ADMIN" %}
+                <div class="row">
+                    <div class="col-4">
+                        <a href="#" class="btn btn-primary mb-3">
+                            <i class="icon-plus2"></i>
+                            Добавить пользователя
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title">Пользователи</h5>
+                </div>
+
+                <div class="card-body">
+                    В данной таблице отображаются пользователи имеющие определенные роли в использовании системой #CityVision
+                </div>
+
+                <div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            <th>Должность</th>
+                            <th>Муниципалитет</th>
+                            <th>Роль</th>
+                            <th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.first_name }}</td>
+                                <td>{{ item.last_name }}</td>
+                                <td>{{ item.position}}</td>
+                                <td><a href="{% url "municipality:detail" item.municipality.pk %}">{{ item.municipality }}</a></td>
+                                <td><span class="badge badge-success">{{ item.get_role_display }}</span></td>
+                                <td class="text-center">
+                                    <div class="list-icons">
+                                        <div class="dropdown">
+                                            <a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="icon-menu9"></i>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(22px, 19px, 0px);">
+                                                <a href="#" class="dropdown-item disabled"><i class="icon-trash"></i> Удалить</a>
+                                                <a href="#" class="dropdown-item disabled"><i class="icon-pen"></i> Редактировать</a>
+                                                <a href="#" class="dropdown-item disabled"><i class="icon-blocked"></i> Отключить</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

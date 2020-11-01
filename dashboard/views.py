@@ -29,3 +29,9 @@ class ReportsView(TemplateView, ContextProcessor):
     template_name = 'dashboard/reports_index.html'
     section = 'reports'
     page_title = '<i class="icon-stats-bars4 mr-2"></i> Отчеты'
+
+
+class ActionsView(TemplateView, ContextProcessor):
+    template_name = 'dashboard/actions_index.html'
+    section = 'actions'
+    page_title = '<i class="icon-pulse2 mr-2"></i> Активность'

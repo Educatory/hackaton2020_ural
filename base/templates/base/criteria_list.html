@@ -11,22 +11,29 @@
         </div>
     </div>
     <div class="criteries">
-        {% for foo in object_list %}
+        {% for item in object_list %}
             <div class="card">
                 <div class="card-header">
                     <h6 class="card-title">
                         <a class="text-default collapsed" data-toggle="collapse"
-                           href="#criteries-{{ foo.pk }}" aria-expanded="false">{{ foo }}</a>
+                           href="#criteries-{{ item.pk }}" aria-expanded="false"><strong>Критерий #{{ item.pk }}.</strong> {{ item }}</a>
                     </h6>
                 </div>
 
-                <div id="criteries-{{ foo.pk }}" class="collapse" style="">
+                <div id="criteries-{{ item.pk }}" class="collapse" style="">
                     <div class="card-body">
-                        <p><span>Описание:</span>{{ foo.description }}</p>
-                        <span>Подключение к АПИ</span>{{ foo.api }}
+                        <p><span>Описание:</span> {{ item.description }}</p>
+                        <span>Подключение к API: </span> {{ item.api }}
+                        <p><span>Применен к : </span>
+                        {% for i in item.municipality.all %}
+                            <a href="{% url "municipality:detail" i.pk %}"><span class="badge badge-light">{{ i }}</span></a>,
+                        {% endfor %}</p>
 
                     </div>
-                    <a class="btn btn-primary" href="{% url 'municipality:criteria_edit' foo.pk %}">Редактировать</a>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="{% url 'municipality:criteria_edit' item.pk %}">Редактировать</a>
+
                 </div>
             </div>
         {% endfor %}

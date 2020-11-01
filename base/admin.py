@@ -11,6 +11,8 @@ class AdminBasicIndicators(admin.ModelAdmin):
 @admin.register(Criteria)
 class AdminCriteria(admin.ModelAdmin):
     filter_horizontal = ('indicators',)
+    list_display = ['name', 'api_enable']
+    list_editable = ['api_enable']
 
 
 @admin.register(Municipality)

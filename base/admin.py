@@ -19,7 +19,7 @@ class AdminCriteria(admin.ModelAdmin):
 class AdminMunicipality(admin.ModelAdmin):
     filter_horizontal = ('criteria',)
     list_display = ['city', 'mayor']
-    list_editable = ['mayor']
+    list_editable = ['mayor', 'index']
 #
 # @admin.register(MunicipalityCriteria)
 # class AdminMMunicipalityCriteria(admin.ModelAdmin):

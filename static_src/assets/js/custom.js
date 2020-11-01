@@ -105,7 +105,51 @@ $(document).ready(function () {
         Cookies.set('role', $( "#role_selector option:selected" ).val());
         location.reload();
     })
+// Block card
+    $('.block-card').on('click', function(e) {
+        e.preventDefault();
+        var message = $(this).parent().parent().find('.blockui-message');
+        var block = $(this).closest('.card');
+        $(block).block({
+            message: message,
+            overlayCSS: {
+                backgroundColor: '#fff',
+                opacity: 0.8,
+                cursor: 'wait'
+            },
+            css: {
+                width: 100,
+                '-webkit-border-radius': 2,
+                '-moz-border-radius': 2,
+                border: 0,
+                padding: 0,
+                backgroundColor: 'transparent'
+            },
+            onBlock: function() {
+                clearTimeout();
+            }
+        });
 
+        window.setTimeout(function () {
+            message.html('<i class="icon-spinner4 spinner mt-1"></i> <span class="font-weight-semibold d-block mt-2">Загрузка данных из РосСтата</span>')
+        }, 0);
+
+        window.setTimeout(function () {
+            message.html('<i class="icon-spinner4 spinner mt-1"></i> <span class="font-weight-semibold d-block mt-2">Ждем...</span>')
+        }, 2000);
+
+        window.setTimeout(function () {
+            message.addClass('bg-danger').html('<i class="icon-warning mt-1"></i> <span class="font-weight-semibold d-block mt-2">Ошибка загрузки...</span>')
+        }, 4000);
+
+        window.setTimeout(function () {
+            $(block).unblock({
+                onUnblock: function(){
+                    message.removeClass('bg-danger');
+                }
+            });
+        }, 10000);
+    });
 });
 
 

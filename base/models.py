@@ -39,7 +39,7 @@ class Municipality(models.Model):
     city = models.ForeignKey(City, verbose_name='Муниципальный район',  on_delete=models.CASCADE)
     criteria = models.ManyToManyField(Criteria, verbose_name='Критерии')
     order = models.IntegerField('Порядок', default=1)
-    index = models.PositiveSmallIntegerField("Index", default=0)
+    index = models.DecimalField("Index", decimal_places=2, max_digits=5, default=0)
 
     class Meta:
         ordering = ['order', 'city']

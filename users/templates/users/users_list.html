@@ -45,7 +45,9 @@
                                 <td>{{ item.first_name }}</td>
                                 <td>{{ item.last_name }}</td>
                                 <td>{{ item.position}}</td>
-                                <td><a href="{% url "municipality:detail" item.municipality.pk %}">{{ item.municipality }}</a></td>
+                                {% if item.municipality.pk %}
+                                    <td><a href="{% url "municipality:detail" item.municipality.pk %}">{{ item.municipality }}</a></td>
+                                {% endif %}
                                 <td><span class="badge badge-success">{{ item.get_role_display }}</span></td>
                                 <td class="text-center">
                                     <div class="list-icons">

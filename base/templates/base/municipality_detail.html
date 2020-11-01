@@ -94,11 +94,15 @@
                                         Добавить данные
                                     </a>
                                 {% else %}
-                                    <a href="#" class="list-icons-item btn btn-success mr-5 text-white">
+                                    <a href="#" class="list-icons-item btn btn-success mr-5 text-white block-card">
                                         <i class="icon-arrow-right13 r-2"></i>
                                         Получить данные
                                     </a>
                                 {% endif %}
+                                <div class="blockui-message bg-slate-700 text-white rounded p-2" style="display: none;">
+                                    <i class="icon-spinner10 spinner mt-1"></i>
+                                    <span class="font-weight-semibold d-block mt-2">Загрузка...</span>
+                                </div>
                                 <a href="#" class="list-icons-item ml-1"><i class="icon-file-pdf"></i></a>
                                 <a href="#" class="list-icons-item ml-1"><i class="icon-file-excel"></i></a>
                             </div>

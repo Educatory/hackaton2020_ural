@@ -69,27 +69,36 @@
                         </div>
                     </div>
 
-                    <div class="table-responsive" style="display: none;">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
+                    {#                    <div class="table-responsive" style="display: none;">#}
+                    {#                        <table class="table">#}
+                    {#                            <thead>#}
+                    {#                            <tr>#}
+                    {#                                <th>#</th>#}
+                    {#                                <th>First Name</th>#}
+                    {#                                <th>Last Name</th>#}
+                    {#                                <th>Username</th>#}
+                    {#                            </tr>#}
+                    {#                            </thead>#}
+                    {#                            <tbody>#}
+                    {##}
+                    {#                            </tbody>#}
+                    {#                        </table>#}
+                    {#                    </div>#}
 
                     <div class="card-footer bg-light d-flex justify-content-between" style="display: none;">
                         <div>
                             <div class="list-icons">
-                                <a href="#" class="list-icons-item btn btn-primary mr-5 text-white">
-                                    <i class="icon-plus2 mr-2"></i>Добавить данные</a>
+                                {% if crit.api_enable %}
+                                    <a href="#" class="list-icons-item btn btn-primary mr-5 text-white">
+                                        <i class="icon-plus2 mr-2"></i>
+                                        Добавить данные
+                                    </a>
+                                {% else %}
+                                    <a href="#" class="list-icons-item btn btn-success mr-5 text-white">
+                                        <i class="icon-arrow-right13 r-2"></i>
+                                        Получить данные
+                                    </a>
+                                {% endif %}
                                 <a href="#" class="list-icons-item ml-1"><i class="icon-file-pdf"></i></a>
                                 <a href="#" class="list-icons-item ml-1"><i class="icon-file-excel"></i></a>
                             </div>

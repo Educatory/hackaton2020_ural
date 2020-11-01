@@ -29,6 +29,7 @@ class Criteria(models.Model):
     description = models.TextField('Описание', null=True, blank=True)
     api = models.CharField("API URI", max_length=250, blank=True, null=True,
                            help_text="Настройки подключения к API из открытых источников")
+    api_enable = models.BooleanField('Включить API', default=False)
 
     class Meta:
         ordering = ['name']
@@ -72,8 +73,8 @@ class MunicipalityCriteria(TimeStampedModel):
     criteria = models.ForeignKey(Criteria,
                                  verbose_name='Критерии',
                                  on_delete=models.CASCADE)
-
     dataset = jsonfield.JSONField()
+    dataset_result = models.DecimalField("Index", decimal_places=2, max_digits=5, default=0)
 
     class Meta:
         ordering = ['created']

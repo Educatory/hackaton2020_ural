@@ -6,8 +6,8 @@ from base.models import Municipality
 class CustomUser(models.Model):
     ROLE = (
         [1, 'Администратор'],
-        [2, 'Сотрудник'],
-        [3, 'Руководитьель']
+        [2, 'Оператор'],
+        [3, 'Руководитель']
     )
     first_name = models.CharField('Имя', max_length=255, null=True)
     last_name = models.CharField('Фамилия', max_length=255, null=True)

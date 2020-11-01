@@ -45,6 +45,7 @@ class Municipality(models.Model):
     criteria = models.ManyToManyField(Criteria, verbose_name='Критерии', related_name='municipality')
     order = models.IntegerField('Порядок', default=1)
     index = models.DecimalField("Index", decimal_places=2, max_digits=5, default=0)
+    mayor = models.CharField("Глава города", max_length=150, default='')
 
     class Meta:
         ordering = ['order', 'city']

@@ -64,7 +64,7 @@
                                 <i class="icon-city mr-2"></i>
                                 {{ item }}
                             </span>
-                                <span class="badge bg-success ml-auto">{{ item.get_index }}</span>
+                                <span class="badge {% if item.get_index < 5 %}bg-info{% elif item.get_index < 4 %}bg-warning{% elif item.get_index < 3 %}bg-danger{% else %}bg-success{% endif %} ml-auto"> {{ item.get_index }}</span>
                             </a>
                         {% endfor %}
 

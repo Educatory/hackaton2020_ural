@@ -5,7 +5,8 @@
 {% block content %}
     <div class="row">
         <div class="col-3">
-            <div class="card bg-indigo-400" style="background-image: url({% static "dashboard/panel_bg.png" %}); background-size: contain;">
+            <div class="card bg-indigo-400"
+                 style="background-image: url({% static "dashboard/panel_bg.png" %}); background-size: contain;">
                 <div class="card-body text-center">
                     <div class="card-img-actions d-inline-block mb-3">
                         <img class="img-fluid" src="{{ item.city.icon.url }}" height="170" alt="">
@@ -15,8 +16,10 @@
                     <span class="d-block opacity-75">{{ item.mayor }}<</span>
 
                     <div class="list-icons list-icons-extended mt-3">
-                        <a href="#" class="list-icons-item text-white" data-popup="tooltip" title="" data-container="body" data-original-title="Телефончик"><i class="icon-phone"></i></a>
-                        <a href="#" class="list-icons-item text-white" data-popup="tooltip" title="" data-container="body" data-original-title="Почта"><i class="icon-mailbox"></i></a>
+                        <a href="#" class="list-icons-item text-white" data-popup="tooltip" title=""
+                           data-container="body" data-original-title="Телефончик"><i class="icon-phone"></i></a>
+                        <a href="#" class="list-icons-item text-white" data-popup="tooltip" title=""
+                           data-container="body" data-original-title="Почта"><i class="icon-mailbox"></i></a>
                     </div>
                 </div>
             </div>
@@ -69,27 +72,13 @@
                         </div>
                     </div>
 
-                    {#                    <div class="table-responsive" style="display: none;">#}
-                    {#                        <table class="table">#}
-                    {#                            <thead>#}
-                    {#                            <tr>#}
-                    {#                                <th>#</th>#}
-                    {#                                <th>First Name</th>#}
-                    {#                                <th>Last Name</th>#}
-                    {#                                <th>Username</th>#}
-                    {#                            </tr>#}
-                    {#                            </thead>#}
-                    {#                            <tbody>#}
-                    {##}
-                    {#                            </tbody>#}
-                    {#                        </table>#}
-                    {#                    </div>#}
 
                     <div class="card-footer bg-light d-flex justify-content-between" style="display: none;">
                         <div>
                             <div class="list-icons">
                                 {% if crit.api_enable %}
-                                    <a href="#" class="list-icons-item btn btn-primary mr-5 text-white">
+                                    <a href="#" data-toggle="modal" data-target="#modal_default"
+                                       class="list-icons-item btn btn-primary mr-5 text-white">
                                         <i class="icon-plus2 mr-2"></i>
                                         Добавить данные
                                     </a>
@@ -118,5 +107,29 @@
                 </div>
             </div>
         {% endfor %}
+    </div>
+    <div id="modal_default" class="modal fade" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Загрузить данные</h5>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="font-weight-semibold">Загрузка данных</h6>
+                    <p>Загрузка данных из файла JSON или CSV</p>
+                    <hr>
+                    <label>
+                        <textarea></textarea>
+                    </label>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn bg-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

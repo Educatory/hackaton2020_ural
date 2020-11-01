@@ -31,20 +31,5 @@ class Migration(migrations.Migration):
             name='indicators',
             field=models.ManyToManyField(blank=True, to='base.BasicIndicators', verbose_name='Базоваые показатели'),
         ),
-        migrations.CreateModel(
-            name='MunicipalityCriteria',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
-                ('dataset', models.JSONField()),
-                ('criteria', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='base.criteria', verbose_name='Критерии')),
-                ('municipality', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='base.municipality', verbose_name='Города/Районы')),
-            ],
-            options={
-                'verbose_name': 'Данные критерия',
-                'verbose_name_plural': 'Данные критерия',
-                'ordering': ['created'],
-            },
-        ),
+
     ]

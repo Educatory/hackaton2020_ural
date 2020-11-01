@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static cookie %}
+{% load static cookie criteria_index %}
 
 {% block content %}
     <div class="row">
@@ -61,6 +61,7 @@
     </div>
     <div class="row criteries">
         {% for crit in item.criteria.all %}
+            {% criteria_index item crit as criteria_index %}
             <div class="col-6">
                 <div class="card card-collapsed">
                     <div class="card-header header-elements-inline">
@@ -100,7 +101,7 @@
                         <ul class="list-inline list-inline-dotted mb-0 mt-1 mt-sm-0">
                             <li class="list-inline-item">Обновлен 3 дня назад</li>
                             <li class="list-inline-item">
-                                <span class="badge bg-warning ml-auto">4.9</span>
+                                <span class="badge bg-warning ml-auto">{{ criteria_index }}</span>
                             </li>
                         </ul>
                     </div>

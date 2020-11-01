@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 from django.db.models import Avg
 from django_extensions.db.models import TimeStampedModel
@@ -58,7 +60,7 @@ class Municipality(models.Model):
     def get_general_index(cls):
         """Вычисление среднего общего индекса """
         avg_ind = cls.objects.all().aggregate(Avg('index'))
-        return avg_ind['index__avg']
+        return ("%.2f" % (avg_ind['index__avg']))
 
 
 class MunicipalityCriteria(TimeStampedModel):

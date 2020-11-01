@@ -1,4 +1,7 @@
+from decimal import Decimal
+
 from django.db import models
+from django.db.models import Avg
 from django_extensions.db.models import TimeStampedModel
 from region.models import City
 import jsonfield
@@ -40,6 +43,7 @@ class Municipality(models.Model):
     city = models.ForeignKey(City, verbose_name='Муниципальный район',  on_delete=models.CASCADE)
     criteria = models.ManyToManyField(Criteria, verbose_name='Критерии', related_name='municipality')
     order = models.IntegerField('Порядок', default=1)
+    index = models.DecimalField("Index", decimal_places=2, max_digits=5, default=0)
 
     class Meta:
         ordering = ['order', 'city']
@@ -51,12 +55,13 @@ class Municipality(models.Model):
 
     def get_index(self):
         """Вычисление среднего индекса относительно критереев"""
-        return 5.7
+        return self.index
 
     @classmethod
     def get_general_index(cls):
         """Вычисление среднего общего индекса """
-        return 5.7
+        avg_ind = cls.objects.all().aggregate(Avg('index'))
+        return ("%.2f" % (avg_ind['index__avg']))
 
 
 class MunicipalityCriteria(TimeStampedModel):

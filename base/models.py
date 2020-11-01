@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django_extensions.db.models import TimeStampedModel
 from region.models import City
 
@@ -56,7 +57,8 @@ class Municipality(models.Model):
     @classmethod
     def get_general_index(cls):
         """Вычисление среднего общего индекса """
-        return 5.7
+        avg_ind = cls.objects.all().aggregate(Avg('index'))
+        return avg_ind['index__avg']
 
 
 class MunicipalityCriteria(TimeStampedModel):
